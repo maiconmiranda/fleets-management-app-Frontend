@@ -1,0 +1,44 @@
+.navbar-custom {
+  background-color: white;
+  height: 110px;
+}
+
+.nav_link {
+  font-family: "Roboto", sans-serif;
+  color: #227c9d !important;
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 25px;
+}
+
+.nav_link:hover {
+  font-family: "Roboto", sans-serif;
+  color: #fe6d73 !important;
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 25px;
+}
+
+.underline {
+  border-bottom-width: 2px;
+  text-decoration-line: underline !important;
+  text-underline-offset: 15px !important;
+  text-decoration-color: #fe6d73 !important;
+  text-decoration-thickness: 2px !important;
+}
+
+@media only screen and (max-width: 840px) {
+  .underline {
+    text-decoration-line: none !important;
+  }
+  .navbar .navbar-brand > img {
+    height: 56px !important;
+    width: 229px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .underline {
+    text-decoration-line: none !important;
+  }
+}
