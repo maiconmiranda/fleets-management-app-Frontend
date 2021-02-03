@@ -1,6 +1,5 @@
-import "./Sidebar.css"
-import on_scooter from "../../assets/on_scooter.svg"
-
+import "./Sidebar.css";
+import on_scooter from "../../assets/on_scooter.svg";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
   return (
@@ -9,7 +8,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <div className="sidebar__img">
           <img src={on_scooter} alt="logo" />
           <h1>fleets</h1>
-          <hr/>
+          <hr />
           <h3>Company Area</h3>
         </div>
         <i
@@ -34,18 +33,6 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-cog"></i>
           <a href="/">Settings</a>
         </div>
-        {/* <div className="sidebar__link">
-          <i className="fa fa-wrench"></i>
-          <a href="/">Employee Management</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-archive"></i>
-          <a href="/">Warehouse</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-handshake-o"></i>
-          <a href="/">Contracts</a>
-        </div> */}
         <h2>DRIVERS</h2>
         <div className="sidebar__link">
           <i className="fa fa-id-card"></i>

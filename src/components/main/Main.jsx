@@ -40,10 +40,7 @@ const Main = () => {
           </div>
 
           <div className="card">
-            <i
-              className="fa fa-car fa-2x text-blue"
-              aria-hidden="true"
-            ></i>
+            <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
             <div className="card_inner">
               <p className="text-primary-p">Condition Reports</p>
               <span className="font-bold text-title">25</span>
@@ -51,10 +48,7 @@ const Main = () => {
           </div>
 
           <div className="card">
-            <i
-              className="fa fa-car fa-2x text-red"
-              aria-hidden="true"
-            ></i>
+            <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
             <div className="card_inner">
               <p className="text-primary-p">Incidents</p>
               <span className="font-bold text-title">2</span>
