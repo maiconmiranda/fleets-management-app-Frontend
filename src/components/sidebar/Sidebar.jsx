@@ -1,5 +1,6 @@
 import "./Sidebar.css";
 import on_scooter from "../../assets/on_scooter.svg";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
   return (
@@ -22,12 +23,12 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
       <div className="sidebar__menu">
         <div className="sidebar__link active_menu_link">
           <i className="fa fa-home"></i>
-          <a href="/">Dashboard</a>
+          <Link to="/company">Dashboard</Link>
         </div>
         <h2>ACCOUNT</h2>
         <div className="sidebar__link">
           <i className="fa fa-address-book" aria-hidden="true"></i>
-          <a href="/">Update Company Details</a>
+          <Link to="/update-company">Update Company Details</Link>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-cog"></i>

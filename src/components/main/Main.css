@@ -11,10 +11,14 @@ dash_main {
 .main__title {
   display: flex;
   align-items: center;
+  padding-bottom: 20px;
+  -webkit-box-shadow: 0 4px 6px -6px #222;
+  -moz-box-shadow: 0 4px 6px -6px #222;
+  box-shadow: 0 4px 6px -6px #222;
 }
 
 .main__title > img {
-  max-height: 100px;
+  max-height: 80px;
   object-fit: contain;
   margin-right: 20px;
 }
