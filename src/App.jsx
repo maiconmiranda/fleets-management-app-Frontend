@@ -15,6 +15,7 @@ import ViewAllVehicles from "./components/vehicle/DashViewFleet";
 import AddVehicles from "./components/vehicle/DashAddVehicle";
 import EditVehicles from "./components/vehicle/DashEditVehicle";
 import ViewOneVehicle from "./components/vehicle/DashViewOneVehicle";
+import DisplayAssignDriver from "./components/assignDriver/DashAssignDriverToVehicle";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
       <Route path="/add-vehicle" component={AddVehicles} />
       <Route path="/edit-vehicle" component={EditVehicles} />
       <Route path="/view-vehicle" component={ViewOneVehicle} />
+      <Route path="/assign-driver" component={DisplayAssignDriver} />
     </Switch>
   );
 };

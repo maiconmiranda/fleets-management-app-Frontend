@@ -58,7 +58,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         </div>
         <div className="sidebar__link">
           <i className="fa fa-link"></i>
-          <a href="/">Assign Driver to Vehicle</a>
+          <Link to="/assign-driver">Assign Driver To Vehicle</Link>
         </div>
         <h2>REPORTS</h2>
         <div className="sidebar__link">
