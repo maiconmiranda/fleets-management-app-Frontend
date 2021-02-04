@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
-import { Wrapper, SelectDateCard } from "./ViewDailyTrackStyle";
-import { Link } from "react-router-dom";
+import {
+  Wrapper,
+  SelectDateCard,
+} from "../../components/viewDailyTracks/ViewDailyTrackStyle";
 
-export function ViewDailyTracks() {
+export function ReportByVehicle() {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <>
       <Wrapper>
-        <h3>Daily Track Reports</h3>
+        <h3>View By Vehicle</h3>
         <Card body>
           <SelectDateCard>
             <p>Select Date</p>
@@ -85,13 +87,6 @@ export function ViewDailyTracks() {
                 <span className="font-bold text-title">2</span>
               </div>
             </div>
-            <Link to="/daily-report-vehicle">
-              <div>
-                <div className="card1">
-                  <h1>View By Vehicle</h1>
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </div>

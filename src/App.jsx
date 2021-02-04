@@ -18,6 +18,7 @@ import ViewOneVehicle from "./components/vehicle/DashViewOneVehicle";
 import DisplayAssignDriver from "./components/assignDriver/DashAssignDriverToVehicle";
 import ViewReports from "./components/viewReports/DashViewReports";
 import DashDailyTrack from "./components/viewDailyTracks/DashDailyTrack";
+import DashReportByVehicle from "./components/dailytrackByVehicle/DashReportByVehicle";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
       <Route path="/assign-driver" component={DisplayAssignDriver} />
       <Route path="/view-reports" component={ViewReports} />
       <Route path="/view-daily-track" component={DashDailyTrack} />
+      <Route path="/daily-report-vehicle" component={DashReportByVehicle} />
     </Switch>
   );
 };
