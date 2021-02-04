@@ -4,9 +4,11 @@ import { HomeNavBar } from "../homeNavBar/HomeNavBar";
 import { FormWrap } from "../logIn/LogInStyle";
 import { Footer } from "../footer/Footer";
 import { Wrap } from "./SignUpStyle";
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
-export function SignUp() {
+export function SignUp(props) {
+  const location = useLocation();
+  const isAdminSet = Boolean(location.state);
   const history = useHistory();
   const [companies, setCompanies] = useState([]);
   const [email, setEmail] = useState("");
@@ -17,6 +19,11 @@ export function SignUp() {
   const [companyName, setCompanyName] = useState("");
   const [companyId, setCompanyId] = useState(null);
   const [driverId, setDriverId] = useState("");
+  const [isAdmin, setIsAdmin] = useState(isAdminSet);
+
+  const handleChange = (e) => {
+    setIsAdmin(e.target.value);
+  };
 
   useEffect(() => {
     fetchCompanies();
@@ -29,9 +36,9 @@ export function SignUp() {
     console.log(companies);
   };
 
-  function companyFinder(e) {
-    setCompanyId(e.target.id);
-  }
+  // function companyFinder(e) {
+  //   setCompanyId(e.target.id);
+  // }
 
   async function onFormSubmit(event) {
     event.preventDefault();
@@ -55,6 +62,7 @@ export function SignUp() {
               company_name: companyName, // console.log(companyId)
               driver_id: driverId,
               company_id: companyId,
+              is_admin: isAdmin,
             },
           }),
         }
@@ -64,7 +72,7 @@ export function SignUp() {
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {
-        history.push("/login");
+        isAdmin ? history.push("/company") : history.push("/");
       }
     } catch (err) {
       console.log(err.message);
@@ -202,6 +210,18 @@ export function SignUp() {
                   );
                 })}
               </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check
+                type="switch"
+                name="is_admin"
+                id="is_admin"
+                defaultChecked={isAdmin}
+                value={isAdmin}
+                onChange={handleChange}
+                label="is admin"
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit">

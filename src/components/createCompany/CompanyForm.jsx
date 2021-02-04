@@ -3,6 +3,7 @@ import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+// import { SignUp } from "../signUp/SignUp";
 
 export function CompanyForm() {
   let history = useHistory();
@@ -15,6 +16,8 @@ export function CompanyForm() {
   const [state, setState] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [website, setWebsite] = useState("");
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [companyId, setICompanyId] = useState("");
 
   async function onFormSubmit(e) {
     try {
@@ -39,7 +42,10 @@ export function CompanyForm() {
         }),
       });
       // redirect_to
-      history.push("/sign-up");
+      history.push({
+        pathname: "/sign-up",
+        state: { isAdmin: true },
+      });
     } catch (err) {
       console.log(err.message);
     }
@@ -155,13 +161,16 @@ export function CompanyForm() {
               onChange={(e) => setWebsite(e.target.value)}
             />
           </Form.Group>
+
           <ButtonWrap>
             <Button
               variant="primary"
               size="lg"
               id="submit"
               type="submit"
-              value="Submit"
+              value="submit"
+              setIsAdmin={setIsAdmin}
+              isAdmin={isAdmin}
             >
               Submit
             </Button>
