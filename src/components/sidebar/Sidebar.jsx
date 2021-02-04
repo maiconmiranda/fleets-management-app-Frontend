@@ -37,19 +37,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <h2>DRIVERS</h2>
         <div className="sidebar__link">
           <i className="fa fa-id-card"></i>
-          <a href="/">View All Drivers</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-plus"></i>
-          <a href="/">Add a Driver</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-edit"></i>
-          <a href="/">Edit a Driver</a>
-        </div>
-        <div className="sidebar__link">
-          <i className="fa fa-minus"></i>
-          <a href="/">Remove a driver</a>
+          <Link to="/view-all-drivers">View All Drivers</Link>
         </div>
         <h2>VEHICLE</h2>
         <div className="sidebar__link">

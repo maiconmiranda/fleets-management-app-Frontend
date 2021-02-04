@@ -9,6 +9,7 @@ import { CreateAccount } from "./components/signUp/CreateAccount";
 import { SignUp } from "./components/signUp/SignUp";
 import { CreateCompany } from "./components/createCompany/CreateCompany";
 import UpdateCompany from "./components/createCompany/DashUpdateCompany";
+import ViewAllDrivers from "./components/driverCompanyDash/DashViewAllDrivers";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
       <Route path="/create-company" component={CreateCompany} />
 
       <Route path="/update-company" component={UpdateCompany} />
+      <Route path="/view-all-drivers" component={ViewAllDrivers} />
     </Switch>
   );
 };
