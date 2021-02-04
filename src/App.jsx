@@ -12,6 +12,8 @@ import UpdateCompany from "./components/createCompany/DashUpdateCompany";
 import ViewAllDrivers from "./components/driverCompanyDash/DashViewAllDrivers";
 import ViewDriver from "./components/driverCompanyDash/DashViewOneDriver";
 import ViewAllVehicles from "./components/vehicle/DashViewFleet";
+import AddVehicles from "./components/vehicle/DashAddVehicle";
+import EditVehicles from "./components/vehicle/DashEditVehicle";
 
 const App = () => {
   return (
@@ -28,6 +30,8 @@ const App = () => {
       <Route path="/view-all-drivers" component={ViewAllDrivers} />
       <Route path="/view-driver" component={ViewDriver} />
       <Route path="/view-all-vehicles" component={ViewAllVehicles} />
+      <Route path="/add-vehicle" component={AddVehicles} />
+      <Route path="/edit-vehicle" component={EditVehicles} />
     </Switch>
   );
 };
