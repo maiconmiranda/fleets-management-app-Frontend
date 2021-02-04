@@ -7,6 +7,7 @@ import { HowItWorks } from "./components/howItWorks/HowItWorks";
 import { LogIn } from "./components/logIn/LogIn";
 import { CreateAccount } from "./components/signUp/CreateAccount";
 import { SignUp } from "./components/signUp/SignUp";
+import { CreateCompany } from "./components/createCompany/CreateCompany";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/login" component={LogIn} />
       <Route path="/create-account" component={CreateAccount} />
       <Route path="/sign-up" component={SignUp} />
+      <Route path="/create-company" component={CreateCompany} />
     </Switch>
   );
 };

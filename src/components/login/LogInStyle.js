@@ -10,3 +10,8 @@ overflow: hidden;
 position: relative;
 padding-bottom: 100px;
 `
+
+export const ButtonWrap = styled.div`
+display: flex;
+justify-content: center;
+`

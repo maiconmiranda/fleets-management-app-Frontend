@@ -5,7 +5,7 @@ const footerWrap = {
   backgroundColor: "#F8F8F8",
   borderTop: "1px solid #E7E7E7",
   textAlign: "center",
-  position: "absolute",
+  position: "relative",
   bottom: "0",
   display: "block",
   width: "100%",

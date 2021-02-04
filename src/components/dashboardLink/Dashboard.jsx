@@ -12,7 +12,7 @@ const Dashboard = () => {
     setsidebarOpen(false);
   };
   return (
-    <div className="container">
+    <div className="dashcontainer">
       <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
       <Main />
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />

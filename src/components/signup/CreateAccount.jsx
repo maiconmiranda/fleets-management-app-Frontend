@@ -24,7 +24,7 @@ export function CreateAccount() {
                   Organization, click in the button below.
                 </Text>
               </Card.Text>
-              <Link to="/CreateCompany">
+              <Link to="/create-company">
                 <Button variant="primary">I am a Company</Button>
               </Link>
             </Card.Body>

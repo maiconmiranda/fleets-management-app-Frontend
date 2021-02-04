@@ -32,7 +32,7 @@ body {
   font-family: "Lato", sans-serif;
 } */
 
-.text-primary-p {
+.text_primary-p {
   color: #a5aaad;
   font-size: 14px;
   font-weight: 700;
@@ -62,7 +62,7 @@ body {
   color: #3b9668;
 }
 
-.container {
+.dashcontainer {
   display: grid;
   height: 100vh;
   grid-template-columns: 0.8fr 1fr 1fr 1fr;
@@ -73,7 +73,7 @@ body {
 }
 
 @media only screen and (max-width: 978px) {
-  .container {
+  .dashcontainer {
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 3fr;
     grid-template-areas:

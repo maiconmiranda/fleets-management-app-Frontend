@@ -4,7 +4,7 @@ import Chart from "../charts/Chart";
 
 const Main = () => {
   return (
-    <main>
+    <dash_main>
       <div className="main__container">
         {/* <!-- MAIN TITLE STARTS HERE --> */}
 
@@ -20,37 +20,37 @@ const Main = () => {
 
         {/* <!-- MAIN CARDS STARTS HERE --> */}
         <div className="main__cards">
-          <div className="card">
+          <div className="dashcard">
             <i
               className="fa fa-user-o fa-2x text-lightblue"
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Drivers</p>
+              <p className="text_primary-p">Drivers</p>
               <span className="font-bold text-title">34</span>
             </div>
           </div>
 
-          <div className="card">
+          <div className="dashcard">
             <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
             <div className="card_inner">
-              <p className="text-primary-p">Daily Tracks</p>
+              <p className="text_primary-p">Daily Tracks</p>
               <span className="font-bold text-title">130</span>
             </div>
           </div>
 
-          <div className="card">
+          <div className="dashcard">
             <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
             <div className="card_inner">
-              <p className="text-primary-p">Condition Reports</p>
+              <p className="text_primary-p">Condition Reports</p>
               <span className="font-bold text-title">25</span>
             </div>
           </div>
 
-          <div className="card">
+          <div className="dashcard">
             <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
             <div className="card_inner">
-              <p className="text-primary-p">Incidents</p>
+              <p className="text_primary-p">Incidents</p>
               <span className="font-bold text-title">2</span>
             </div>
           </div>
@@ -104,7 +104,7 @@ const Main = () => {
         </div>
         {/* <!-- CHARTS ENDS HERE --> */}
       </div>
-    </main>
+    </dash_main>
   );
 };
 
