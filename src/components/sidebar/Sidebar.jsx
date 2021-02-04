@@ -50,7 +50,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         </div>
         <div className="sidebar__link">
           <i className="fa fa-edit"></i>
-          <Link to="/add-vehicle">Edit Vehicle</Link>
+          <Link to="/edit-vehicle">Edit Vehicle</Link>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-minus"></i>

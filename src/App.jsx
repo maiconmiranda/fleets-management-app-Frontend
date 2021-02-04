@@ -14,6 +14,7 @@ import ViewDriver from "./components/driverCompanyDash/DashViewOneDriver";
 import ViewAllVehicles from "./components/vehicle/DashViewFleet";
 import AddVehicles from "./components/vehicle/DashAddVehicle";
 import EditVehicles from "./components/vehicle/DashEditVehicle";
+import ViewOneVehicle from "./components/vehicle/DashViewOneVehicle";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/view-all-vehicles" component={ViewAllVehicles} />
       <Route path="/add-vehicle" component={AddVehicles} />
       <Route path="/edit-vehicle" component={EditVehicles} />
+      <Route path="/view-vehicle" component={ViewOneVehicle} />
     </Switch>
   );
 };
