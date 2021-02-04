@@ -10,6 +10,8 @@ import { SignUp } from "./components/signUp/SignUp";
 import { CreateCompany } from "./components/createCompany/CreateCompany";
 import UpdateCompany from "./components/createCompany/DashUpdateCompany";
 import ViewAllDrivers from "./components/driverCompanyDash/DashViewAllDrivers";
+import ViewDriver from "./components/driverCompanyDash/DashViewOneDriver";
+import ViewAllVehicles from "./components/vehicle/DashViewFleet";
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
 
       <Route path="/update-company" component={UpdateCompany} />
       <Route path="/view-all-drivers" component={ViewAllDrivers} />
+      <Route path="/view-driver" component={ViewDriver} />
+      <Route path="/view-all-vehicles" component={ViewAllVehicles} />
     </Switch>
   );
 };

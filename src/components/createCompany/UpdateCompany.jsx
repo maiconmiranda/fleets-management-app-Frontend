@@ -1,7 +1,6 @@
 import React from "react";
 import { Wrap } from "../signUp/SignUpStyle";
 import { CompanyForm } from "./CompanyForm";
-import { Footer } from "../footer/Footer";
 
 export function UpdateCompany() {
   return (
