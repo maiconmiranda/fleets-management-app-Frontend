@@ -63,7 +63,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <h2>REPORTS</h2>
         <div className="sidebar__link">
           <i className="fa fa-database"></i>
-          <a href="/">View Reports</a>
+          <Link to="/view-reports">View Reports</Link>
         </div>
         <div className="sidebar__logout">
           <i className="fa fa-power-off"></i>
