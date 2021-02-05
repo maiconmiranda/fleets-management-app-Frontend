@@ -2,8 +2,10 @@ import React from "react";
 import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Input } from "./Input";
 
 export function VehicleForm() {
+  // const [make, setMake] = useState("");
   // const getInitialState= () =>{
   //   const value = new Date().toISOString();
   //   return {
@@ -27,53 +29,30 @@ export function VehicleForm() {
     <>
       <FormWrap>
         <Form>
-          <Form.Group controlId="formBasicMake">
-            <Form.Label htmlFor="make">Make</Form.Label>
-            <Form.Control
-              type="text"
-              name="make"
-              id="make"
-              placeholder="Honda"
-              // value={make}
-              // onChange={(e) => setmake(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicModel">
-            <Form.Label htmlFor="model">Mdel</Form.Label>
-            <Form.Control
-              type="model"
-              name="model"
-              id="model"
-              placeholder="Civic"
-              // value={model}
-              // onChange={(e) => setmodel(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicYear">
-            <Form.Label htmlFor="year">Year</Form.Label>
-            <Form.Control
-              type="text"
-              name="year"
-              id="year"
-              placeholder="2020"
-              // value={year}
-              // onChange={(e) => setyear(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicColor">
-            <Form.Label htmlFor="color">Color</Form.Label>
-            <Form.Control
-              type="text"
-              name="color"
-              id="color"
-              placeholder="black"
-              // value={color}
-              // onChange={(e) => setcolor(e.target.value)}
-            />
-          </Form.Group>
+          <Input
+            name={"make"}
+            label={"Make"}
+            placeholder={"Honda"}
+            // setName={setMake}
+          />
+          <Input
+            name={"model"}
+            label={"Model"}
+            placeholder={"Civic"}
+            // setName={setModel}
+          />
+          <Input
+            name={"year"}
+            label={"Year"}
+            placeholder={"2020"}
+            // setName={setYear}
+          />
+          <Input
+            name={"color"}
+            label={"Color"}
+            placeholder={"White"}
+            // setName={setColor}
+          />
 
           <Form.Group controlId="formBasicRego">
             <Form.Label htmlFor="rego">Rego</Form.Label>

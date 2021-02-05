@@ -48,6 +48,19 @@ export function LogIn() {
           console.log(isAdmin);
           return { isAdmin: isAdmin, id: id, userName: isUser };
         });
+      // .then((data) =>
+      //   fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/${data.id}`, {
+      //     headers: {
+      //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+      //     },
+      //   })
+      // );
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   const company = data;
+      //   return company
+      // });
+
       userFinder.isAdmin
         ? history.push({
             pathname: "/company",

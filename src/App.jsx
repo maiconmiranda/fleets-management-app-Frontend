@@ -19,6 +19,7 @@ import DisplayAssignDriver from "./components/assignDriver/DashAssignDriverToVeh
 import ViewReports from "./components/viewReports/DashViewReports";
 import DashDailyTrack from "./components/viewDailyTracks/DashDailyTrack";
 import DashReportByVehicle from "./components/dailytrackByVehicle/DashReportByVehicle";
+import { GetVehicle } from './components/createCompany/getCompany';
 
 const App = () => {
   return (
@@ -30,14 +31,15 @@ const App = () => {
       <Route path="/create-account" component={CreateAccount} />
       <Route path="/sign-up" component={SignUp} />
       <Route path="/create-company" component={CreateCompany} />
+      <Route path="/companies/:id" component={GetVehicle} />
 
-      <Route path="/update-company" component={UpdateCompany} />
+      <Route path="/update-company/:id" component={UpdateCompany} />
       <Route path="/view-all-drivers" component={ViewAllDrivers} />
       <Route path="/view-driver" component={ViewDriver} />
       <Route path="/view-all-vehicles" component={ViewAllVehicles} />
       <Route path="/add-vehicle" component={AddVehicles} />
-      <Route path="/edit-vehicle" component={EditVehicles} />
-      <Route path="/view-vehicle" component={ViewOneVehicle} />
+      <Route path="/edit-vehicle/:id" component={EditVehicles} />
+      <Route path="/view-vehicle/:id" component={ViewOneVehicle} />
       <Route path="/assign-driver" component={DisplayAssignDriver} />
       <Route path="/view-reports" component={ViewReports} />
       <Route path="/view-daily-track" component={DashDailyTrack} />

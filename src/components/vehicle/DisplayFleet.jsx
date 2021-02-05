@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CardColumns, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -11,121 +11,77 @@ const CardFooterStyle = {
 };
 
 export function DisplayAllVehicles() {
+  const [vehicles, setVehicles] = useState([]);
+
+  function fetchVehicles() {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/vehicles`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then((res) => res.json())
+      .then((body) => setVehicles(body));
+  }
+
+  useEffect(() => {
+    fetchVehicles();
+  }, []);
+
+  async function onDeleteLinkClick(e, vehicle) {
+    try {
+      e.preventDefault();
+      if (window.confirm("Would you like to delete?")) {
+        await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/vehicles/${vehicle.id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+          }
+        );
+        fetchVehicles();
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+
   return (
     <div style={{ marginTop: "50px" }}>
       <h3>View your Fleet</h3>
       <CardColumns>
-        <Card className="card card-body h-100">
-          <div classname="col-sm-4 py-2">
-            <Card.Body>
-              <Card.Title>Fleet Number:</Card.Title>
-              <Card.Text>
-                <p>Make:</p>
-                <p>Model:</p>
-                <p>Year:</p>
-                <p>Color:</p>
-                <p>Rego:</p>
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer style={CardFooterStyle}>
-              <Link to="/view-vehicle">
-                <Button variant="success">View</Button>
-              </Link>
-              <Link to="/company">
-                <Button variant="danger">Remove</Button>
-              </Link>
-            </Card.Footer>
-          </div>
-        </Card>
-        <Card className="card card-body h-100">
-          <div classname="col-sm-4 py-2">
-            <Card.Body>
-              <Card.Title>Fleet Number:</Card.Title>
-              <Card.Text>
-                <p>Make:</p>
-                <p>Model:</p>
-                <p>Year:</p>
-                <p>Color:</p>
-                <p>Rego:</p>
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer style={CardFooterStyle}>
-              <Link to="/view-vehicle">
-                <Button variant="success">View</Button>
-              </Link>
-              <Link to="/company">
-                <Button variant="danger">Remove</Button>
-              </Link>
-            </Card.Footer>
-          </div>
-        </Card>
-        <Card className="card card-body h-100">
-          <div classname="col-sm-4 py-2">
-            <Card.Body>
-              <Card.Title>Fleet Number:</Card.Title>
-              <Card.Text>
-                <p>Make:</p>
-                <p>Model:</p>
-                <p>Year:</p>
-                <p>Color:</p>
-                <p>Rego:</p>
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer style={CardFooterStyle}>
-              <Link to="/view-vehicle">
-                <Button variant="success">View</Button>
-              </Link>
-              <Link to="/company">
-                <Button variant="danger">Remove</Button>
-              </Link>
-            </Card.Footer>
-          </div>
-        </Card>
-        <Card className="card card-body h-100">
-          <div classname="col-sm-4 py-2">
-            <Card.Body>
-              <Card.Title>Fleet Number:</Card.Title>
-              <Card.Text>
-                <p>Make:</p>
-                <p>Model:</p>
-                <p>Year:</p>
-                <p>Color:</p>
-                <p>Rego:</p>
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer style={CardFooterStyle}>
-              <Link to="/view-vehicle">
-                <Button variant="success">View</Button>
-              </Link>
-              <Link to="/company">
-                <Button variant="danger">Remove</Button>
-              </Link>
-            </Card.Footer>
-          </div>
-        </Card>
-        <Card className="card card-body h-100">
-          <div classname="col-sm-4 py-2">
-            <Card.Body>
-              <Card.Title>Fleet Number:</Card.Title>
-              <Card.Text>
-                <p>Make:</p>
-                <p>Model:</p>
-                <p>Year:</p>
-                <p>Color:</p>
-                <p>Rego:</p>
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer style={CardFooterStyle}>
-              <Link to="/view-vehicle">
-                <Button variant="success">View</Button>
-              </Link>
-              <Link to="/company">
-                <Button variant="danger">Remove</Button>
-              </Link>
-            </Card.Footer>
-          </div>
-        </Card>
+        {vehicles.map((vehicle) => {
+          return (
+            <Card className="card card-body h-100" key={vehicle.id}>
+              <div >
+                <Card.Body>
+                  <Card.Title>Fleet Number: {vehicle.fleet_id}</Card.Title>
+                  <Card.Text>
+                    <p>Make: {vehicle.make}</p>
+                    <p>Model: {vehicle.model}</p>
+                    <p>Year: {vehicle.year}</p>
+                    <p>Color: {vehicle.color}</p>
+                    <p>Rego: {vehicle.rego}</p>
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer style={CardFooterStyle}>
+                  <Link to={`/view-vehicle/${vehicle.id}`}>
+                    <Button variant="success">View</Button>
+                  </Link>
+                  <Link onClick={(e) => onDeleteLinkClick(e, vehicle)}
+                    to={`/view-vehicle/${vehicle.id}`}>
+                    <Button variant="danger">Remove</Button>
+                  </Link>
+                </Card.Footer>
+              </div>
+            </Card>
+          )
+        })}
       </CardColumns>
     </div>
+
   );
 }

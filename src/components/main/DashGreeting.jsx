@@ -9,7 +9,7 @@ export function DashGreeting(props) {
     <div className="main__title">
       <img src={car_on_road} alt="car_on_road" />
       <div className="main__greeting">
-        <h1>Hello {location.state.user}</h1>
+        <h1>Hello "Company Name"</h1>
         <p>Welcome to your admin dashboard</p>
       </div>
     </div>
