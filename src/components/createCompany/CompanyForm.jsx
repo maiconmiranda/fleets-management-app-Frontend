@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-// import { SignUp } from "../signUp/SignUp";
 
 export function CompanyForm() {
   let history = useHistory();
-  const [companyName, setCompanyName] = useState("");
+  const [companyName, setCompanyName] = useState("Mahdi");
   const [email, setEmail] = useState("");
   const [managerName, setManagerName] = useState("");
   const [abn, setAbn] = useState("");
@@ -17,7 +15,6 @@ export function CompanyForm() {
   const [contactNumber, setContactNumber] = useState("");
   const [website, setWebsite] = useState("");
   const [isAdmin, setIsAdmin] = useState(true);
-  const [companyId, setICompanyId] = useState("");
 
   async function onFormSubmit(e) {
     try {
@@ -44,7 +41,12 @@ export function CompanyForm() {
       // redirect_to
       history.push({
         pathname: "/sign-up",
-        state: { isAdmin: true },
+        state: {
+          isAdmin: true,
+          setCompanyName: companyName,
+          setEmail: email,
+          setManagerName: managerName,
+        },
       });
     } catch (err) {
       console.log(err.message);

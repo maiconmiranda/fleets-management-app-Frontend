@@ -3,8 +3,10 @@ import { Form, Button } from "react-bootstrap";
 import { HomeNavBar } from "../../components/homeNavBar/HomeNavBar";
 import { FormWrap, Wrap } from "./LogInStyle";
 import { Footer } from "../footer/Footer";
+import { useHistory } from "react-router-dom";
 
-export function LogIn(history) {
+export function LogIn() {
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState("");
@@ -30,8 +32,28 @@ export function LogIn(history) {
       } else {
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
-        history.push("/");
       }
+
+      const userFinder = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const selectedUser = data.find((el) => el.email === email);
+          const id = selectedUser.company_id;
+          const isAdmin = selectedUser.is_admin;
+          const isUser = selectedUser.user_name;
+          console.log(selectedUser);
+          console.log(id);
+          console.log(isAdmin);
+          return { isAdmin: isAdmin, id: id, userName: isUser };
+        });
+      userFinder.isAdmin
+        ? history.push({
+            pathname: "/company",
+            state: { user: userFinder.userName },
+          })
+        : history.push("/");
     } catch (err) {
       setErrMessage(err.message);
     }

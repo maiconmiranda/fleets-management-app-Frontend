@@ -8,12 +8,15 @@ import { useLocation, useHistory } from "react-router-dom";
 
 export function SignUp(props) {
   const location = useLocation();
-  const isAdminSet = Boolean(location.state);
+  const isManager = location.state.setManagerName;
+  const isEmail = location.state.setEmail;
+  const isAdminSet = Boolean(location.state.isAdmin);
+  console.log(isAdminSet);
   const history = useHistory();
   const [companies, setCompanies] = useState([]);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(isEmail);
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState(isManager);
   const [driverLicenseNumber, setDriverLicenseNumber] = useState("");
   const [driverLicenseExpiry, setDriverLicenseExpiry] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -214,6 +217,7 @@ export function SignUp(props) {
 
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check
+                disabled
                 type="switch"
                 name="is_admin"
                 id="is_admin"
