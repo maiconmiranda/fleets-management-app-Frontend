@@ -28,7 +28,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         <h2>ACCOUNT</h2>
         <div className="sidebar__link">
           <i className="fa fa-address-book" aria-hidden="true"></i>
-          <Link to="/update-company">Update Company Details</Link>
+          <Link to="/update-company/:id">Update Company Details</Link>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-cog"></i>

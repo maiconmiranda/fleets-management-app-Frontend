@@ -2,49 +2,73 @@ import React, { useState, useEffect } from "react";
 import { Wrap } from "../signUp/SignUpStyle";
 import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 export function UpdateCompany() {
   let history = useHistory();
+  console.log(history)
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [managerName, setManagerName] = useState("");
   const [abn, setAbn] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
+  const [address, setAddress] = useState("");
   const [suburb, setSuburb] = useState("");
   const [state, setState] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [website, setWebsite] = useState("");
-  const { id } = useParams();
+  const [id, setId] = useState(null)
+  const headers = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }
 
-  useEffect(() => {
-    // localhost:3000/company/10
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
+  function fetchCompany() {
+
+    // Call the API
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/status`, headers).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then((data) => {
+      return fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/` + data.company_id, headers);
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then((company) => {
+      setId(company.id)
+      setCompanyName(company.company_name)
+      setEmail(company.email)
+      setManagerName(company.manager_name)
+      setAbn(company.abn)
+      setAddress(company.address)
+      setSuburb(company.suburb)
+      setState(company.state)
+      setContactNumber(company.contact_number)
+      setWebsite(company.website)
     })
-      .then((res) => res.json())
-      .then((company) => {
-        setCompanyName(company.company_name)
-        setEmail(company.email)
-        setManagerName(company.manager_name)
-        setAbn(company.abn)
-        setStreetAddress(company.street_address)
-        setSuburb(company.suburb)
-        setState(company.state)
-        setContactNumber(company.contact_number)
-        setWebsite(company.website)
+      .catch((error) => {
+        console.warn(error);
       });
-  }, [id]);
+  }
+  useEffect(() => {
+    fetchCompany();
+  }, []);
 
   async function onFormSubmit(e) {
     try {
       e.preventDefault();
-      await fetch(`${process.env.REACT_APP_BACKEND_URL}/companies`, {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           company: {
@@ -52,7 +76,7 @@ export function UpdateCompany() {
             email: email,
             manager_name: managerName,
             abn: abn,
-            street_address: streetAddress,
+            address: address,
             suburb: suburb,
             state: state,
             contact_number: contactNumber,
@@ -73,19 +97,19 @@ export function UpdateCompany() {
 
         <FormWrap>
           <Form onSubmit={onFormSubmit}>
-            <Form.Group controlId="formBasicCompanyName">
+            <Form.Group >
               <Form.Label htmlFor="CompanyName">Company Name</Form.Label>
               <Form.Control
                 type="text"
                 name="CompanyName"
                 id="CompanyName"
-                // placeholder="maicon co."
+                // placeholder=
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group >
               <Form.Label htmlFor="Email">Email</Form.Label>
               <Form.Control
                 type="Email"
@@ -97,7 +121,7 @@ export function UpdateCompany() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicManagerName">
+            <Form.Group >
               <Form.Label htmlFor="ManagerName">Manager Name</Form.Label>
               <Form.Control
                 type="text"
@@ -109,7 +133,7 @@ export function UpdateCompany() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicAbn">
+            <Form.Group >
               <Form.Label htmlFor="abn">abn</Form.Label>
               <Form.Control
                 type="text"
@@ -121,19 +145,19 @@ export function UpdateCompany() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicStreetAddress">
-              <Form.Label htmlFor="StreetAddress">Street Address</Form.Label>
+            <Form.Group >
+              <Form.Label htmlFor="address">Street Address</Form.Label>
               <Form.Control
                 type="text"
-                name="StreetAddress"
-                id="StreetAddress"
+                name="address"
+                id="address"
                 // placeholder="1 Spencer Street"
-                value={streetAddress}
-                onChange={(e) => setStreetAddress(e.target.value)}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicSuburb">
+            <Form.Group >
               <Form.Label htmlFor="Suburb">Suburb</Form.Label>
               <Form.Control
                 type="text"
@@ -145,7 +169,7 @@ export function UpdateCompany() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicState">
+            <Form.Group >
               <Form.Label htmlFor="State">State</Form.Label>
               <Form.Control
                 type="text"
@@ -157,7 +181,7 @@ export function UpdateCompany() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicSuburb">
+            <Form.Group >
               <Form.Label htmlFor="ContactNumber">Contact Number</Form.Label>
               <Form.Control
                 type="text"
@@ -169,12 +193,12 @@ export function UpdateCompany() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicSuburb">
-              <Form.Label htmlFor="Website">Website</Form.Label>
+            <Form.Group >
+              <Form.Label htmlFor="website">Website</Form.Label>
               <Form.Control
                 type="text"
-                name="CWebsite"
-                id="CWebsite"
+                name="website"
+                id="website"
                 // placeholder="https://www.maiconco.com.au"
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
