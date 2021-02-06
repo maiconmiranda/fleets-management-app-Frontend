@@ -1,84 +1,64 @@
-import React, { useState, useEffect } from "react";
-// import axios from 'axios'
+import { useState, useEffect } from "react";
 
 
-export function GetVehicle(props) {
-    const [vehicle, setVehicle] = useState(null);
-    const id = props.match.params.id;
+export function GetCompany() {
+    const [companyName, setCompanyName] = useState("");
+    const [email, setEmail] = useState("");
+    const [managerName, setManagerName] = useState("");
+    // const [abn, setAbn] = useState("");
+    // const [address, setAddress] = useState("");
+    // const [suburb, setSuburb] = useState("");
+    // const [state, setState] = useState("");
+    // const [contactNumber, setContactNumber] = useState("");
+    // const [website, setWebsite] = useState("");
+    // const [id, setId] = useState(null)
+    const headers = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    }
 
-    useEffect(() => {
-        // localhost:3000/companies/10
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/vehicles/${id}`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+    function fetchCompany() {
+
+        // Call the API
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/status`, headers).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
             }
+        }).then((data) => {
+            return fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/` + data.company_id, headers);
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        }).then((company) => {
+            // setId(company.id)
+            setCompanyName(company.company_name)
+            setEmail(company.email)
+            setManagerName(company.manager_name)
+            // setAbn(company.abn)
+            // setAddress(company.address)
+            // setSuburb(company.suburb)
+            // setState(company.state)
+            // setContactNumber(company.contact_number)
+            // setWebsite(company.website)
+
         })
-            .then((res) => res.json())
-            .then((vehicle) => {
-                setVehicle(vehicle);
+            .catch((error) => {
+                console.warn(error);
             });
-    }, [id]);
+    }
+    useEffect(() => {
+        fetchCompany();
+    }, []);
 
 
+    let companyDetails = [companyName, email, managerName]
 
-
-
-
-    // // const [email, setEmail] = useState("");
-    // const [companies, setCompanies] = useState([]);
-    // // const [id, setId] = useState("")
-    // const id = props.match.params.id;
-    // console.log(id)
-    // const headers = {
-    //     headers: {
-    //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     }
-    // }
-
-    // // const fetchvehicleId = () => {
-
-    // //     const vehicleId = axios.get(`${process.env.REACT_APP_BACKEND_URL}/status`, headers)
-    // //         .then(res => {
-    // //             return res.data.current_user.vehicle_id
-    // //         })
-    // //         .catch(err => {
-
-    // //         });
-    // //     return vehicleId
-    // // }
-
-    // // const id = fetchvehicleId()
-
-    // // console.log(id)
-
-
-
-    // const fetchvehicle = () => {
-
-    //     const vehicle = axios.get(`${process.env.REACT_APP_BACKEND_URL}/companies/${id}`, headers)
-    //         .then(res => {
-    //             return res
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         });
-    //     return vehicle
-    // }
-
-    // const vehicle = fetchvehicle()
-    // console.log(vehicle)
-
-    return (
-        vehicle && (
-            <>
-                <div>
-                    <h2>model: {vehicle.model}</h2>
-                    <p>make: ${vehicle.make}</p>
-                    <p>year: {vehicle.year}</p>
-                </div>
-            </>
-
-        )
-    )
-
+    return companyDetails
 }
+

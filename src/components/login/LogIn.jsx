@@ -46,27 +46,9 @@ export function LogIn() {
           console.log(selectedUser);
           console.log(id);
           console.log(isAdmin);
-          return { isAdmin: isAdmin, id: id, userName: isUser };
+          isAdmin ? history.push({ pathname: "/company", state: { companyId: id, userName: isUser } }) : history.push("/");
         });
-      // .then((data) =>
-      //   fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/${data.id}`, {
-      //     headers: {
-      //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-      //     },
-      //   })
-      // );
-      // .then((res) => res.json())
-      // .then((data) => {
-      //   const company = data;
-      //   return company
-      // });
 
-      userFinder.isAdmin
-        ? history.push({
-            pathname: "/company",
-            state: { user: userFinder.userName },
-          })
-        : history.push("/");
     } catch (err) {
       setErrMessage(err.message);
     }

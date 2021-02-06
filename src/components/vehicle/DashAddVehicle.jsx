@@ -18,6 +18,7 @@ const AddVehicles = () => {
       <dash_main>
         <div className="main__container">
           <DashGreeting />
+          <h3>Add Vehicle</h3>
           <AddVehicle />
         </div>
       </dash_main>
