@@ -6,7 +6,7 @@ const DashHome = () => {
   return (
     <div className="main__container">
       <DashGreeting />
-      {/* <!-- MAIN CARDS STARTS HERE --> */}
+      {/* /* <!-- MAIN CARDS STARTS HERE --> */}
       <div className="main__cards">
         <div className="dashcard">
           <i
