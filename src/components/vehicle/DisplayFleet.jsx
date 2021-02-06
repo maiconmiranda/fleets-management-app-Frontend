@@ -7,7 +7,7 @@ const CardFooterStyle = {
   justifyContent: "space-evenly",
   borderBottom: "1px solid #227C9D",
   borderTop: "1px solid #227C9D",
-  backgroundColor: "white",
+  backgroundColor: "white"
 };
 
 export function DisplayAllVehicles() {
@@ -54,6 +54,7 @@ export function DisplayAllVehicles() {
       <h3>View your Fleet</h3>
       <CardColumns>
         {vehicles.map((vehicle) => {
+          const vehicleId = vehicle.id
           return (
             <Card className="card card-body h-100" key={vehicle.id}>
               <div >
@@ -65,10 +66,11 @@ export function DisplayAllVehicles() {
                     <p>Year: {vehicle.year}</p>
                     <p>Color: {vehicle.color}</p>
                     <p>Rego: {vehicle.rego}</p>
+                    <p>Rego: {vehicle.id}</p>
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer style={CardFooterStyle}>
-                  <Link to={`/view-vehicle/${vehicle.id}`}>
+                  <Link to={{ pathname: `/view-vehicle/${vehicle.id}`, data: vehicleId }}>
                     <Button variant="success">View</Button>
                   </Link>
                   <Link onClick={(e) => onDeleteLinkClick(e, vehicle)}

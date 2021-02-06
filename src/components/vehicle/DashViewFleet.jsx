@@ -15,12 +15,12 @@ const ViewAllVehicles = () => {
   return (
     <div className="dashcontainer">
       <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
-      <div className="dash_main">
+      <dash_main>
         <div className="main__container">
           <DashGreeting />
           <DisplayAllVehicles />
         </div>
-      </div>
+      </dash_main>
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
     </div>
   );
