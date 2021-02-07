@@ -49,10 +49,6 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <Link to="/add-vehicle">Add Vehicle</Link>
         </div>
         <div className="sidebar__link">
-          <i className="fa fa-edit"></i>
-          <Link to="/edit-vehicle">Edit Vehicle</Link>
-        </div>
-        <div className="sidebar__link">
           <i className="fa fa-minus"></i>
           <Link to="/view-all-vehicles">Remove Vehicle</Link>
         </div>

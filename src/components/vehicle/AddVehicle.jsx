@@ -1,165 +1,260 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Input } from "./Input";
+import { Link, useParams, useHistory } from "react-router-dom";
+import { GetUser } from "../main/GetUser";
 
 export function AddVehicle() {
-  // const [make, setMake] = useState("");
-  // const getInitialState= () =>{
-  //   const value = new Date().toISOString();
-  //   return {
-  //     value: value
-  //   }
-  // }
-  // const handleChange= (value, formattedValue) =>{
-  //   this.setState({
-  //     value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
-  //     formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
-  //   });
-  // }
-  // const componentDidUpdate= ()=>{
-  //   // Access ISO String and formatted values from the DOM.
-  //   const hiddenInputElement = document.getElementById("example-datepicker");
-  //   console.log(hiddenInputElement.value); // ISO String, ex: "2016-11-19T12:00:00.000Z"
-  //   console.log(hiddenInputElement.getAttribute('data-formattedvalue')) // Formatted String, ex: "11/19/2016"
-  // },
+  const history = useHistory()
+  const getUser = GetUser();
+  const userId = getUser.id
+  const getCompanyId = getUser.company_id
+
+  const [companyId, setCompanyId] = useState(getCompanyId);
+  const [fleetId, setFleetId] = useState("");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState("");
+  const [color, setColor] = useState("");
+  const [rego, setRego] = useState("");
+  const [regoExpiryDate, setRegoExpiryDate] = useState("");
+  const [registrationFee, setRegistrationFee] = useState("");
+  const [insuranceProvider, setInsuranceProvider] = useState("");
+  const [insurancePolicyNumber, setInsurancePolicyNumber] = useState("");
+  const [insuranceExpiryDate, setInsuranceExpiryDate] = useState("");
+  const [insuranceFee, setInsuranceFee] = useState("");
+  const [maintenanceFee, setMaintenanceFee] = useState("");
+  const { id } = useParams
+
+  console.log(id)
+
+
+  console.log(userId, getCompanyId)
+
+  async function onFormSubmit(e) {
+    try {
+      e.preventDefault();
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/vehicles`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          vehicle: {
+            fleet_id: fleetId,
+            make: make,
+            model: model,
+            year: year,
+            color: color,
+            rego: rego,
+            rego_expiry_date: regoExpiryDate,
+            rego_fee: registrationFee,
+            insurance_provider: insuranceProvider,
+            insurance_policy_number: insurancePolicyNumber,
+            insurance_expiry_date: insuranceExpiryDate,
+            insurance_fee: insuranceFee,
+            maintenance_fee: maintenanceFee,
+            company_id: getCompanyId
+          },
+        }),
+      });
+      // redirect_to
+      history.push("/view-all-vehicles");
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 
   return (
     <>
       {/* <FormWrap> */}
-      <Form>
-        <Input
-          name={"make"}
-          label={"Make"}
-          placeholder={"Honda"}
-        // setName={setMake}
-        />
-        <Input
-          name={"model"}
-          label={"Model"}
-          placeholder={"Civic"}
-        // setName={setModel}
-        />
-        <Input
-          name={"year"}
-          label={"Year"}
-          placeholder={"2020"}
-        // setName={setYear}
-        />
-        <Input
-          name={"color"}
-          label={"Color"}
-          placeholder={"White"}
-        // setName={setColor}
-        />
+      <Form onSubmit={onFormSubmit}>
 
-        <Form.Group controlId="formBasicRego">
+        <Form.Group >
+          <Form.Label htmlFor="companyId">Company Id</Form.Label>
+          <Form.Control
+            type="text"
+            name="companyId"
+            id="companyId"
+            // placeholder={getCompanyId}
+            value={getCompanyId}
+          // onChange={(e) => setCompanyId(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group >
+          <Form.Label htmlFor="fleetId">Fleet Id</Form.Label>
+          <Form.Control
+            type="text"
+            name="fleetId"
+            id="fleetId"
+            placeholder="Fleet number 01"
+            value={fleetId}
+            onChange={(e) => setFleetId(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group >
+          <Form.Label htmlFor="make">Make</Form.Label>
+          <Form.Control
+            type="text"
+            name="make"
+            id="make"
+            placeholder="Honda"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group >
+          <Form.Label htmlFor="model">Model</Form.Label>
+          <Form.Control
+            type="text"
+            name="model"
+            id="model"
+            placeholder="Civic"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group style={{ width: "150px" }}>
+          <Form.Label htmlFor="year">Year</Form.Label>
+          <Form.Control
+            type="text"
+            name="year"
+            id="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group >
+          <Form.Label htmlFor="color">color</Form.Label>
+          <Form.Control
+            type="text"
+            name="color"
+            id="color"
+            placeholder="White"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group >
           <Form.Label htmlFor="rego">Rego</Form.Label>
           <Form.Control
             type="text"
             name="rego"
             id="rego"
             placeholder="License Plate"
-          // value={rego}
-          // onChange={(e) => setrego(e.target.value)}
+            value={rego}
+            onChange={(e) => setRego(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicRego_expiry_date">
-          <Form.Label htmlFor="rego_expiry_date">Rego Expiry Date</Form.Label>
+        <Form.Group style={{ width: "300px" }}>
+          <Form.Label htmlFor="regoExpiryDate">Rego Expiry Date</Form.Label>
           <Form.Control
-            type="text"
-            name="rego_expiry_date"
-            id="rego_expiry_date"
+            type="date"
+            name="regoExpiryDate"
+            id="regoExpiryDate"
             placeholder="01/01/2020"
-          // value={rego_expiry_date}
-          // onChange={(e) => setrego_expiry_date(e.target.value)}
+            value={regoExpiryDate}
+            onChange={(e) => setRegoExpiryDate(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicRegistration_cost">
-          <Form.Label htmlFor="registration_cost">
-            Registration Cost
+        <Form.Group controlId="RegistrationFee">
+          <Form.Label htmlFor="registrationFee">
+            Registration fee
             </Form.Label>
           <Form.Control
-            type="text"
-            name="registration_cost"
-            id="registration_cost"
-            placeholder="Victoria"
-          // value={registration_cost}
-          // onChange={(e) => setregistration_cost(e.target.value)}
+            type="decimal"
+            name="registrationFee"
+            id="registrationFee"
+            placeholder="500.00"
+            value={registrationFee}
+            onChange={(e) => setRegistrationFee(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicInsurance_provider">
-          <Form.Label htmlFor="insurance_provider">
+        <Form.Group >
+          <Form.Label htmlFor="insuranceProvider">
             Insurance Provider
             </Form.Label>
           <Form.Control
             type="text"
-            name="insurance_provider"
-            id="insurance_provider"
+            name="insuranceProvider"
+            id="insuranceProvider"
             placeholder="Alianz"
-          // value={insurance_provider}
-          // onChange={(e) => setinsurance_provider(e.target.value)}
+            value={insuranceProvider}
+            onChange={(e) => setInsuranceProvider(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicInsurance_policy_number">
-          <Form.Label htmlFor="insurance_policy_number">
+        <Form.Group >
+          <Form.Label htmlFor="insurancePolicyNumber">
             Insurance Policy Number
             </Form.Label>
           <Form.Control
             type="text"
-            name="insurance_policy_number"
-            id="insurance_policy_number"
+            name="insurancePolicyNumber"
+            id="insurancePolicyNumber"
             placeholder="A202020202020"
-          // value={insurance_policy_number}
-          // onChange={(e) => setinsurance_policy_number(e.target.value)}
+            value={insurancePolicyNumber}
+            onChange={(e) => setInsurancePolicyNumber(e.target.value)}
           />
         </Form.Group>
-        {/* <DatePicker
-            id="example-datepicker"
-            value={this.state.value}
-            onChange={this.handleChange}
-          /> */}
-        <Form.Group controlId="formBasicinsurance_expiry_date">
-          <Form.Label htmlFor="insurance_expiry_date">
+        <Form.Group style={{ width: "300px" }}>
+          <Form.Label htmlFor="insuranceExpiryDate">
             Insurance expiry Date
             </Form.Label>
           <Form.Control
-            type="text"
-            name="insurance_expiry_date"
-            id="insurance_expiry_date"
+            type="date"
+            name="insuranceExpiryDate"
+            id="insuranceExpiryDate"
             placeholder="01/01/2020"
-          // value={insurance_expiry_date}
-          // onChange={(e) => setinsurance_expiry_date(e.target.value)}
+            value={insuranceExpiryDate}
+            onChange={(e) => setInsuranceExpiryDate(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formBasicInsurance_costs">
-          <Form.Label htmlFor="Insurance_costs">Insurance Costs</Form.Label>
+
+        <Form.Group >
+          <Form.Label htmlFor="InsuranceFee">Insurance Costs</Form.Label>
           <Form.Control
-            type="text"
-            name="insurance_costs"
-            id="insurance_costs"
-            placeholder="https://www.maiconco.com.au"
-          // value={insurance_costs}
-          // onChange={(e) => setinsurance_costs(e.target.value)}
+            type="decimal"
+            name="insuranceFee"
+            id="insuranceFee"
+            placeholder="500.00"
+            value={insuranceFee}
+            onChange={(e) => setInsuranceFee(e.target.value)}
           />
         </Form.Group>
+
+        <Form.Group >
+          <Form.Label htmlFor="maintenanceFee">Maitenance Cost</Form.Label>
+          <Form.Control
+            type="decimal"
+            name="maintenanceFee"
+            id="maintenanceFee"
+            value={maintenanceFee}
+            onChange={(e) => setMaintenanceFee(e.target.value)}
+          />
+        </Form.Group>
+
         <ButtonWrap>
-          <Link to="/company">
-            <Button
-              variant="primary"
-              size="lg"
-              id="submit"
-              type="submit"
-              value="Submit"
-            >
-              Submit
+
+          <Button
+            variant="primary"
+            size="lg"
+            id="submit"
+            type="submit"
+            value="Submit"
+          >
+            Submit
               </Button>
-          </Link>
         </ButtonWrap>
       </Form>
       {/* </FormWrap> */}

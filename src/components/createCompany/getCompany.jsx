@@ -11,7 +11,7 @@ export function GetCompany() {
     // const [state, setState] = useState("");
     // const [contactNumber, setContactNumber] = useState("");
     // const [website, setWebsite] = useState("");
-    // const [id, setId] = useState(null)
+    const [id, setId] = useState(null)
     const headers = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -36,7 +36,7 @@ export function GetCompany() {
                 return Promise.reject(response);
             }
         }).then((company) => {
-            // setId(company.id)
+            setId(company.id)
             setCompanyName(company.company_name)
             setEmail(company.email)
             setManagerName(company.manager_name)
@@ -57,7 +57,7 @@ export function GetCompany() {
     }, []);
 
 
-    let companyDetails = [companyName, email, managerName]
+    let companyDetails = [companyName, email, managerName, id]
 
     return companyDetails
 }

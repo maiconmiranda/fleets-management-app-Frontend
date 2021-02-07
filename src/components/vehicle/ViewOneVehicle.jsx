@@ -45,11 +45,11 @@ export function DisplayOneVehicle(props) {
                 <p>Color: {vehicle.color}</p>
                 <p>Rego: {vehicle.rego}</p>
                 <p>Rego Expire Date: {vehicle.rego_expiry_date}</p>
-                <p>Registration Cost: {vehicle.registration_cost}</p>
+                <p>Registration Cost: {vehicle.rego_fee}</p>
                 <p>Insurance Provider: {vehicle.insurance_provider}</p>
                 <p>Insurance Policy Number: {vehicle.insurance_policy_number}</p>
                 <p>Insurance Expiry Date: {vehicle.insurance_expiry_date}</p>
-                <p>Insurance Cost: {vehicle.insurance_cost}</p>
+                <p>Insurance Cost: {vehicle.insurance_fee}</p>
                 <p>Vehicle Assigned to:</p>
               </Card.Text>
             </Card.Body>
