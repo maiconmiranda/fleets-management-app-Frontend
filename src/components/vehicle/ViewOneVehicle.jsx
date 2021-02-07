@@ -60,9 +60,6 @@ export function DisplayOneVehicle(props) {
               <Link to="/company">
                 <Button variant="success">View Reports</Button>
               </Link>
-              <Link to="/company">
-                <Button variant="danger">Remove</Button>
-              </Link>
             </Card.Footer>
           </div>
         </Card>
