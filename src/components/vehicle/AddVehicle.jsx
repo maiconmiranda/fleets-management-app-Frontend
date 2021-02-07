@@ -72,18 +72,6 @@ export function AddVehicle() {
       <Form onSubmit={onFormSubmit}>
 
         <Form.Group >
-          <Form.Label htmlFor="companyId">Company Id</Form.Label>
-          <Form.Control
-            type="text"
-            name="companyId"
-            id="companyId"
-            // placeholder={getCompanyId}
-            value={getCompanyId}
-          // onChange={(e) => setCompanyId(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group >
           <Form.Label htmlFor="fleetId">Fleet Id</Form.Label>
           <Form.Control
             type="text"

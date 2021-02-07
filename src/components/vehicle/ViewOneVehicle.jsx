@@ -54,7 +54,7 @@ export function DisplayOneVehicle(props) {
               </Card.Text>
             </Card.Body>
             <Card.Footer style={CardFooterStyle}>
-              <Link to="/edit-vehicle">
+              <Link to="/edit-vehicle/">
                 <Button variant="info">Edit</Button>
               </Link>
               <Link to="/company">

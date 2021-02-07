@@ -1,8 +1,13 @@
 import "./Main.css";
 import { DashGreeting } from "./DashGreeting";
 import Chart from "../charts/Chart";
+import { GetDailyTracks } from '../viewDailyTracks/getDailyTracks';
 
 const DashHome = () => {
+  const dailyTracks = GetDailyTracks()
+
+
+
   return (
     <div className="main__container">
       <DashGreeting />
@@ -23,7 +28,7 @@ const DashHome = () => {
           <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
           <div className="card_inner">
             <p className="text_primary-p">Daily Tracks</p>
-            <span className="font-bold text-title">130</span>
+            <span className="font-bold text-title">{dailyTracks.length}</span>
           </div>
         </div>
 

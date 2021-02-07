@@ -26,7 +26,7 @@ export function DisplayReports() {
             <Card.Text>
               View all incidents reported by the drivers involved.
             </Card.Text>
-            <Link to="/company">
+            <Link to="/view-daily-report">
               <Button style={{ width: "100px" }} variant="primary" size="sm">
                 View
               </Button>{" "}

@@ -50,8 +50,10 @@ export function DisplayAllVehicles() {
 
 
   return (
-    <div style={{ marginTop: "50px" }}>
-      <h3>View your Fleet</h3>
+    <>
+      <div style={{ height: "50px", marginTop: "30px" }}>
+        <h3>View your Fleet</h3>
+      </div>
       <CardColumns>
         {vehicles.map((vehicle) => {
           const vehicleId = vehicle.id
@@ -83,7 +85,7 @@ export function DisplayAllVehicles() {
           )
         })}
       </CardColumns>
-    </div>
+    </>
 
   );
 }
