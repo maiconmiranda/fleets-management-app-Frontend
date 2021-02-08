@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 const CardFooterStyle = {
   display: "flex",
@@ -10,28 +11,52 @@ const CardFooterStyle = {
   backgroundColor: "white",
 };
 
-export function DisplayOneDriver() {
+export function DisplayOneDriver(props) {
+  const location = useLocation();
+  const history = useHistory();
+  const driver = location.data;
+  console.log(driver)
+
+
+  async function onDeleteClick(e, driver) {
+    console.log(driver.id)
+    try {
+      e.preventDefault();
+      if (window.confirm(`Would you like to delete ${driver.user_name}?`)) {
+        await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${driver.id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        history.push('/company')
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
   return (
     <div style={{ marginTop: "50px" }}>
       <h3>View Driver</h3>
       <Card className="card card-body h-100">
         <div classname="col-sm-4 py-2">
           <Card.Body>
-            <Card.Title>Driver Name</Card.Title>
+            <Card.Title>Driver Name: {driver.user_name}</Card.Title>
             <Card.Text>
-              <p>Email:</p>
-              <p>Contact Number:</p>
-              <p>License Number:</p>
-              <p>License Expiry Date:</p>
-              <p>Driver Id:</p>
+              <p>Email: {driver.email}</p>
+              <p>License Number: {driver.driver_license_number}</p>
+              <p>License Expiry Date: {driver.driver_license_expiry}</p>
+              <p>Driver Id: {driver.id}</p>
             </Card.Text>
           </Card.Body>
           <Card.Footer style={CardFooterStyle}>
-            <Link to="/company">
-              <Button variant="info">View Daily Tracks</Button>
+            <Link to={{ pathname: "/view-reports", data: driver }}>
+              <Button variant="info">Reports</Button>
             </Link>
             <Link to="/company">
-              <Button variant="danger">Remove</Button>
+              <Button variant="danger" onClick={(e) => onDeleteClick(e, driver)}>Remove</Button>
             </Link>
           </Card.Footer>
         </div>

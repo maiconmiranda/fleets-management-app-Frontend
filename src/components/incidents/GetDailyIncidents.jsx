@@ -2,29 +2,29 @@ import React, { useState, useEffect } from "react";
 import { Form, ListGroup } from "react-bootstrap";
 import { Wrapper } from "../viewDailyTracks/ViewDailyTrackStyle";
 import { Link } from "react-router-dom";
-import { GetVehicleFromCompany, GetVehicles } from '../vehicle/GetVehicles';
+import { GetVehicles } from '../vehicle/GetVehicles';
 
-export function ViewDailyReports() {
+export function ViewIncidents() {
 
     const vehicles = GetVehicles()
 
     const [vehicleId, setVehicleId] = useState(null)
-    const [dailyReports, setDailyReports] = useState([]);
+    const [incidents, setIncidents] = useState([]);
 
-    function fetchdailyReportsByVehicle() {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/daily-reports-by-vehicle/${vehicleId}`, {
+    function fetchincIdentsByVehicle() {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/incidents-by-vehicle/${vehicleId}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
         })
             .then((res) => res.json())
             .then((data) => {
-                setDailyReports(data);
+                setIncidents(data);
             });
     }
 
     useEffect(() => {
-        fetchdailyReportsByVehicle();
+        fetchincIdentsByVehicle();
 
     }, [vehicleId]);
 
@@ -41,7 +41,7 @@ export function ViewDailyReports() {
         <>
             <Wrapper>
                 <div>
-                    <h3>Daily Track Reports by Vehicle</h3>
+                    <h3>Incidents Report by Vehicle</h3>
                     <Form.Control
                         as="select"
                         className="mr-sm-2"
@@ -57,13 +57,13 @@ export function ViewDailyReports() {
                     </Form.Control>
                 </div>
                 <ListGroup as="ul">
-                    {dailyReports.map((dailyReport) => {
+                    {incidents.map((incident) => {
                         return (
                             <div style={{ marginTop: "10px" }}>
                                 {/* <ListGroup.Item as="li" variant="primary">Rego: {vehicle[0].rego}</ListGroup.Item>
                                 <ListGroup.Item as="li" variant="info">Fleet Id: {vehicle[0].fleet_id}</ListGroup.Item> */}
-                                <ListGroup.Item as="li" >Description: {dailyReport.description}</ListGroup.Item>
-                                <ListGroup.Item as="li" >Created At: {dailyReport.created_at}</ListGroup.Item>
+                                <ListGroup.Item as="li" >Description: {incident.description}</ListGroup.Item>
+                                <ListGroup.Item as="li" >Created At: {incident.created_at}</ListGroup.Item>
                             </div>
                         )
                     })}

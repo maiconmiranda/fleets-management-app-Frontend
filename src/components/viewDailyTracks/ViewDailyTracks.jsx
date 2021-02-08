@@ -141,7 +141,7 @@ export function ViewDailyTracks() {
                 <span className="font-bold text-title">2</span>
               </div>
             </div>
-            <Link to="/daily-report-vehicle">
+            <Link to="/view-daily-track-vehicle" style={{ textDecoration: "none" }}>
               <div>
                 <div className="card1">
                   <h1>View By Vehicle</h1>

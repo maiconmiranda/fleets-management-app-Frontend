@@ -40,7 +40,7 @@ export function DisplayReports() {
             <Card.Text>
               Get to know the condition of your fleet. Reported by the drivers.
             </Card.Text>
-            <Link to="/company">
+            <Link to="/view-incidents">
               <Button style={{ width: "100px" }} variant="primary" size="sm">
                 View
               </Button>{" "}

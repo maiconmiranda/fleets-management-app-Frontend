@@ -120,7 +120,7 @@ dash_main {
 }
 
 .charts__right__title > div > h1 {
-  font-size: 24px;
+  font-size: 20px;
   color: #2e4a66;
   margin-bottom: 5px;
 }
@@ -155,7 +155,7 @@ dash_main {
   text-align: center;
   padding: 25px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .card2 {
@@ -164,7 +164,7 @@ dash_main {
   text-align: center;
   padding: 25px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .card3 {
@@ -173,7 +173,7 @@ dash_main {
   text-align: center;
   padding: 25px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .card4 {
@@ -182,7 +182,7 @@ dash_main {
   text-align: center;
   padding: 25px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 855px) {
