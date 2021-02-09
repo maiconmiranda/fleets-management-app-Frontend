@@ -55,6 +55,14 @@ export function CompanyForm() {
       console.log(err.message);
     }
   }
+
+  const required = () => {
+    return (
+      <Form.Control.Feedback type="invalid">
+        Cannot be blank.
+      </Form.Control.Feedback>
+    )
+  }
   return (
     <>
       <FormWrap>
@@ -62,6 +70,7 @@ export function CompanyForm() {
           <Form.Group controlId="formBasicCompanyName">
             <Form.Label htmlFor="CompanyName">Company Name</Form.Label>
             <Form.Control
+              required
               type="text"
               name="CompanyName"
               id="CompanyName"
@@ -69,11 +78,13 @@ export function CompanyForm() {
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
             <Form.Label htmlFor="Email">Email</Form.Label>
             <Form.Control
+              required
               type="Email"
               name="Email"
               id="Email"
@@ -81,11 +92,13 @@ export function CompanyForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicManagerName">
             <Form.Label htmlFor="ManagerName">Manager Name</Form.Label>
             <Form.Control
+              required
               type="text"
               name="ManagerName"
               id="ManagerName"
@@ -93,11 +106,13 @@ export function CompanyForm() {
               value={managerName}
               onChange={(e) => setManagerName(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicAbn">
             <Form.Label htmlFor="abn">abn</Form.Label>
             <Form.Control
+              required
               type="text"
               name="abn"
               id="abn"
@@ -105,11 +120,13 @@ export function CompanyForm() {
               value={abn}
               onChange={(e) => setAbn(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicStreetAddress">
             <Form.Label htmlFor="StreetAddress">Street Address</Form.Label>
             <Form.Control
+              required
               type="text"
               name="StreetAddress"
               id="StreetAddress"
@@ -117,11 +134,13 @@ export function CompanyForm() {
               value={streetAddress}
               onChange={(e) => setStreetAddress(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicSuburb">
             <Form.Label htmlFor="Suburb">Suburb</Form.Label>
             <Form.Control
+              required
               type="text"
               name="Suburb"
               id="Suburb"
@@ -129,11 +148,13 @@ export function CompanyForm() {
               value={suburb}
               onChange={(e) => setSuburb(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicState">
             <Form.Label htmlFor="State">State</Form.Label>
             <Form.Control
+              required
               type="text"
               name="State"
               id="State"
@@ -141,11 +162,13 @@ export function CompanyForm() {
               value={state}
               onChange={(e) => setState(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicSuburb">
             <Form.Label htmlFor="ContactNumber">Contact Number</Form.Label>
             <Form.Control
+              required
               type="text"
               name="ContactNumber"
               id="ContactNumber"
@@ -153,11 +176,13 @@ export function CompanyForm() {
               value={contactNumber}
               onChange={(e) => setContactNumber(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <Form.Group controlId="formBasicSuburb">
             <Form.Label htmlFor="Website">Website</Form.Label>
             <Form.Control
+              required
               type="text"
               name="CWebsite"
               id="CWebsite"
@@ -165,6 +190,7 @@ export function CompanyForm() {
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
             />
+            <div>{required}</div>
           </Form.Group>
 
           <ButtonWrap>
