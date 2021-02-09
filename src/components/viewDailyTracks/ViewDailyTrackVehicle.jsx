@@ -77,7 +77,7 @@ export function ViewDailyTrackVehicle() {
                             <div style={{ marginTop: "10px" }}>
                                 {/* <ListGroup.Item as="li" variant="primary">Rego: {vehicle[0].rego}</ListGroup.Item>
                                 <ListGroup.Item as="li" variant="info">Fleet Id: {vehicle[0].fleet_id}</ListGroup.Item> */}
-                                <ListGroup.Item as="li" >Date: {dailyTrack.date}</ListGroup.Item>
+                                <ListGroup.Item as="li" variant="info">Date: {dailyTrack.date}</ListGroup.Item>
                                 <ListGroup.Item as="li">Odometer Start: {dailyTrack.odometer_start}</ListGroup.Item>
                                 <ListGroup.Item as="li">Odometer end: {dailyTrack.odometer_end}</ListGroup.Item>
                                 <ListGroup.Item as="li">Fuel fee: {dailyTrack.fuel_fee}</ListGroup.Item>

@@ -4,6 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { ViewIncidents } from "./GetDailyIncidents";
 
+// display the incidents reports 
 const DashIncidents = () => {
     const [sidebarOpen, setsidebarOpen] = useState(false);
     const openSidebar = () => {
@@ -18,6 +19,7 @@ const DashIncidents = () => {
             <dash_main>
                 <div className="main__container">
                     <DashGreeting />
+                    {/* data */}
                     <ViewIncidents />
                 </div>
             </dash_main>

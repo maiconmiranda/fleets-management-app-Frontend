@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Form, ListGroup } from "react-bootstrap";
 import { Wrapper } from "../viewDailyTracks/ViewDailyTrackStyle";
-import { Link } from "react-router-dom";
 import { GetVehicles } from '../vehicle/GetVehicles';
 
+// Logic to display the incidents reports
 export function ViewIncidents() {
-
+    // get the vehicles to sort the incidents by vehicle
     const vehicles = GetVehicles()
 
     const [vehicleId, setVehicleId] = useState(null)
     const [incidents, setIncidents] = useState([]);
-
+    // fetch the incidents
     function fetchincIdentsByVehicle() {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/incidents-by-vehicle/${vehicleId}`, {
             headers: {
@@ -28,6 +28,7 @@ export function ViewIncidents() {
 
     }, [vehicleId]);
 
+    // get the vehicle details to display together with each incident
     const getVehiclesByRego = vehicles.map(vehicle => {
         const vehicleRegistration = {}
         vehicleRegistration.rego = vehicle.rego
@@ -35,7 +36,6 @@ export function ViewIncidents() {
         return vehicleRegistration
     })
 
-    // const vehicle = GetVehicleFromCompany(vehicleId)
 
     return (
         <>
@@ -57,6 +57,7 @@ export function ViewIncidents() {
                     </Form.Control>
                 </div>
                 <ListGroup as="ul">
+                    {/* data goes here */}
                     {incidents.map((incident) => {
                         return (
                             <div style={{ marginTop: "10px" }}>

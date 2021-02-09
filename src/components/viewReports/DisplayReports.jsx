@@ -2,9 +2,11 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+// Display the links to the report pages
 export function DisplayReports() {
   return (
     <>
+      {/* Links to Daily Tracks Reports */}
       <div style={{ marginTop: "50px" }}>
         <Card border="primary">
           <Card.Body>
@@ -19,7 +21,9 @@ export function DisplayReports() {
             </Link>
           </Card.Body>
         </Card>
+
         <br />
+        {/* Link to Daily Reports, or condition reports */}
         <Card border="primary">
           <Card.Body>
             <Card.Title>Incident Reports</Card.Title>
@@ -33,7 +37,9 @@ export function DisplayReports() {
             </Link>
           </Card.Body>
         </Card>
+
         <br />
+        {/* Link to Incidents reports */}
         <Card border="primary">
           <Card.Body>
             <Card.Title>Other Reports</Card.Title>

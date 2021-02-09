@@ -1,15 +1,21 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React from "react";
 import { Card } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
-import { Wrapper, SelectDateCard } from "./ViewDailyTrackStyle";
+import { Wrapper } from "./ViewDailyTrackStyle";
 import { Link } from "react-router-dom";
 import { GetDailyTracks } from './getDailyTracks';
+import { GetDailyReports } from '../viewDailyReports/getDailyReports';
+import { GetIncidents } from '../incidents/GetIncidents';
+
 
 
 export function ViewDailyTracks() {
-  const [startDate, setStartDate] = useState(new Date());
+  // get daily reports, only to display the total
+  const getDailyReptorts = GetDailyReports()
+  // get daily Tracks
   const dailyTracks = GetDailyTracks()
+  // get incidents, only to display the total
+  const getIncidents = GetIncidents()
 
 
   // Get the fuel costs----------------------- /
@@ -33,26 +39,32 @@ export function ViewDailyTracks() {
   const sumOfparkingFees = convertParkingfee.reduce((a, b) => a + b, 0).toFixed(2)
   // End ---------------------------------/
 
-  // Get the parking fees -------------------/
+  // Get the fines -------------------/
   const getFines = dailyTracks.map((e) => {
     const fines = {}
-    fines.parkingFee = e.parking_fee
-    return fines.parkingFee
+    fines.fines = e.fines
+    return fines.fines
   })
   const convertFines = getFines.map(Number)
   const sumOfFines = convertFines.reduce((a, b) => a + b, 0).toFixed(2)
   // End ---------------------------------/
 
 
-  // Get the parking fees -------------------/
+  // Get other costs -------------------/
   const getOthers = dailyTracks.map((e) => {
     const Others = {}
-    Others.parkingFee = e.parking_fee
-    return Others.parkingFee
+    Others.otherCosts = e.other_fee
+    return Others.otherCosts
   })
   const convertOthers = getOthers.map(Number)
   const sumOfOthers = convertOthers.reduce((a, b) => a + b, 0).toFixed(2)
   // End ---------------------------------/
+
+  // Get the total costs of fuel, praking , fines and others
+  const totalOfAll = sumOfFuelCosts + sumOfparkingFees + sumOfFines + sumOfOthers
+  const total = parseFloat(totalOfAll).toFixed(2)
+  // ------------------------/
+
 
 
   return (
@@ -60,18 +72,7 @@ export function ViewDailyTracks() {
       <Wrapper>
         <h3>Daily Track Reports</h3>
         <Card body>
-          <SelectDateCard>
-            <p>Select Date</p>
-
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
-          </SelectDateCard>
+          <h3>Total Expenses: ${total}</h3>
         </Card>
       </Wrapper>
 
@@ -122,7 +123,7 @@ export function ViewDailyTracks() {
               <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
               <div className="card_inner">
                 <p className="text_primary-p">Condition Reports</p>
-                <span className="font-bold text-title">25</span>
+                <span className="font-bold text-title">{getDailyReptorts.length}</span>
               </div>
             </div>
 
@@ -138,7 +139,7 @@ export function ViewDailyTracks() {
               <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
               <div className="card_inner">
                 <p className="text_primary-p">Incidents</p>
-                <span className="font-bold text-title">2</span>
+                <span className="font-bold text-title">{getIncidents.length}</span>
               </div>
             </div>
             <Link to="/view-daily-track-vehicle" style={{ textDecoration: "none" }}>

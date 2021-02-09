@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, ListGroup } from "react-bootstrap";
 import { Wrapper } from "../viewDailyTracks/ViewDailyTrackStyle";
-import { Link } from "react-router-dom";
-import { GetVehicleFromCompany, GetVehicles } from '../vehicle/GetVehicles';
+import { GetVehicles } from '../vehicle/GetVehicles';
 
 export function ViewDailyReports() {
 
@@ -35,7 +34,6 @@ export function ViewDailyReports() {
         return vehicleRegistration
     })
 
-    // const vehicle = GetVehicleFromCompany(vehicleId)
 
     return (
         <>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { CardColumns, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+// logic to display fleet
+// instyle to overwide bootstrap
 const CardFooterStyle = {
   display: "flex",
   justifyContent: "space-evenly",
@@ -9,10 +11,11 @@ const CardFooterStyle = {
   borderTop: "1px solid #227C9D",
   backgroundColor: "white"
 };
-
+// function to display fleet
 export function DisplayAllVehicles() {
   const [vehicles, setVehicles] = useState([]);
 
+  // fetch vehicle
   function fetchVehicles() {
     fetch(`${process.env.REACT_APP_BACKEND_URL}/vehicles`, {
       headers: {
@@ -27,6 +30,7 @@ export function DisplayAllVehicles() {
     fetchVehicles();
   }, []);
 
+  // delete vehicle
   async function onDeleteLinkClick(e, vehicle) {
     try {
       e.preventDefault();
@@ -55,6 +59,7 @@ export function DisplayAllVehicles() {
         <h3>View your Fleet</h3>
       </div>
       <CardColumns>
+        {/* data goes here */}
         {vehicles.map((vehicle) => {
           const vehicleId = vehicle.id
           return (
@@ -75,6 +80,7 @@ export function DisplayAllVehicles() {
                   <Link to={{ pathname: `/view-vehicle/${vehicle.id}`, data: vehicleId }}>
                     <Button variant="success">View</Button>
                   </Link>
+                  {/* remove vehicle */}
                   <Link onClick={(e) => onDeleteLinkClick(e, vehicle)}
                     to={`/view-vehicle/${vehicle.id}`}>
                     <Button variant="danger">Remove</Button>
