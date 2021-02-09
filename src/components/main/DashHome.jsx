@@ -1,52 +1,79 @@
 import "./Main.css";
+import { Link } from "react-router-dom";
 import { DashGreeting } from "./DashGreeting";
 import Chart from "../charts/Chart";
 import { GetDailyTracks } from '../viewDailyTracks/getDailyTracks';
+import { GetDailyReports } from '../viewDailyReports/getDailyReports';
+import { GetIncidents } from '../incidents/GetIncidents';
+import { GetDrivers } from '../driverCompanyDash/GetDrivers';
 
+// This is where the data for the home dashbard
 const DashHome = () => {
+  // get daily tracks to disply the total
   const dailyTracks = GetDailyTracks()
-
-
+  // get daily reports to disply total
+  const getDailyReports = GetDailyReports()
+  // get incidents to display total
+  const getIncidents = GetIncidents()
+  // get all drivers to display total
+  const getDrivers = GetDrivers()
 
   return (
     <div className="main__container">
       <DashGreeting />
       {/* /* <!-- MAIN CARDS STARTS HERE --> */}
       <div className="main__cards">
-        <div className="dashcard">
-          <i
-            className="fa fa-user-o fa-2x text-lightblue"
-            aria-hidden="true"
-          ></i>
-          <div className="card_inner">
-            <p className="text_primary-p">Drivers</p>
-            <span className="font-bold text-title">34</span>
-          </div>
-        </div>
 
-        <div className="dashcard">
-          <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
-          <div className="card_inner">
-            <p className="text_primary-p">Daily Tracks</p>
-            <span className="font-bold text-title">{dailyTracks.length}</span>
+        {/* link to view all numbers of  drivers */}
+        <Link to="/view-all-drivers" style={{ textDecoration: "none" }}>
+          <div className="dashcard">
+            <i
+              className="fa fa-user-o fa-2x text-lightblue"
+              aria-hidden="true"
+            ></i>
+            <div className="card_inner">
+              <p className="text_primary-p">Drivers</p>
+              <span className="font-bold text-title">{getDrivers.length}</span>
+            </div>
           </div>
-        </div>
+        </Link>
+        {/* end ----------/  */}
 
-        <div className="dashcard">
-          <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
-          <div className="card_inner">
-            <p className="text_primary-p">Condition Reports</p>
-            <span className="font-bold text-title">25</span>
+        {/* link to view all numbers of daily tracks */}
+        <Link to="/view-daily-track" style={{ textDecoration: "none" }}>
+          <div className="dashcard">
+            <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+            <div className="card_inner">
+              <p className="text_primary-p">Daily Tracks</p>
+              <span className="font-bold text-title">{dailyTracks.length}</span>
+            </div>
           </div>
-        </div>
+        </Link>
+        {/* end ----------/  */}
 
-        <div className="dashcard">
-          <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
-          <div className="card_inner">
-            <p className="text_primary-p">Incidents</p>
-            <span className="font-bold text-title">2</span>
+        {/* link to view all numbers of  daily reports */}
+        <Link to="/view-daily-report" style={{ textDecoration: "none" }}>
+          <div className="dashcard">
+            <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
+            <div className="card_inner">
+              <p className="text_primary-p">Condition Reports</p>
+              <span className="font-bold text-title">{getDailyReports.length}</span>
+            </div>
           </div>
-        </div>
+        </Link>
+        {/* end ----------/  */}
+
+        {/* link to view all numbers of incidents */}
+        <Link to="/view-incidents" style={{ textDecoration: "none" }}>
+          <div className="dashcard">
+            <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
+            <div className="card_inner">
+              <p className="text_primary-p">Incidents</p>
+              <span className="font-bold text-title">{getIncidents.length}</span>
+            </div>
+          </div>
+        </Link>
+        {/* end ----------/  */}
       </div>
       {/* <!-- MAIN CARDS ENDS HERE --> */}
 

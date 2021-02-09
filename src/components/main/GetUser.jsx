@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+
+// Fetch the current user details
 export function GetUser() {
     const [user, setUser] = useState([]);
 
