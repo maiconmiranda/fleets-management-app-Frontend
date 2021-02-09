@@ -39,7 +39,7 @@ export function ViewDailyReports() {
         <>
             <Wrapper>
                 <div>
-                    <h3>Daily Track Reports by Vehicle</h3>
+                    <h3>Other Reports by Vehicle</h3>
                     <Form.Control
                         as="select"
                         className="mr-sm-2"
@@ -58,10 +58,11 @@ export function ViewDailyReports() {
                     {dailyReports.map((dailyReport) => {
                         return (
                             <div style={{ marginTop: "10px" }}>
-                                {/* <ListGroup.Item as="li" variant="primary">Rego: {vehicle[0].rego}</ListGroup.Item>
-                                <ListGroup.Item as="li" variant="info">Fleet Id: {vehicle[0].fleet_id}</ListGroup.Item> */}
-                                <ListGroup.Item as="li" >Description: {dailyReport.description}</ListGroup.Item>
-                                <ListGroup.Item as="li" >Created At: {dailyReport.created_at}</ListGroup.Item>
+                                <ListGroup.Item as="li" variant="primary" >Description:
+                                <p id="cadt__text"> {dailyReport.description}
+                                    </p></ListGroup.Item>
+                                <ListGroup.Item as="li" >Created At: <p id="cadt__text"> {dailyReport.created_at}
+                                </p></ListGroup.Item>
                             </div>
                         )
                     })}

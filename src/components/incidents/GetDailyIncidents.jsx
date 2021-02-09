@@ -61,10 +61,12 @@ export function ViewIncidents() {
                     {incidents.map((incident) => {
                         return (
                             <div style={{ marginTop: "10px" }}>
-                                {/* <ListGroup.Item as="li" variant="primary">Rego: {vehicle[0].rego}</ListGroup.Item>
-                                <ListGroup.Item as="li" variant="info">Fleet Id: {vehicle[0].fleet_id}</ListGroup.Item> */}
-                                <ListGroup.Item as="li" >Description: {incident.description}</ListGroup.Item>
-                                <ListGroup.Item as="li" >Created At: {incident.created_at}</ListGroup.Item>
+                                <ListGroup.Item as="li" variant="danger">Description:
+                                <p id="card__text"> {incident.description}
+                                    </p></ListGroup.Item>
+                                <ListGroup.Item as="li" >Created At:
+                                <p id="card__text"> {incident.created_at}
+                                    </p></ListGroup.Item>
                             </div>
                         )
                     })}

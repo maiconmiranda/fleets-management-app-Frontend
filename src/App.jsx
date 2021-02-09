@@ -23,6 +23,7 @@ import DashDailyReports from './components/viewDailyReports/DashDailyReports';
 import DashDailyTrackVehicle from './components/viewDailyTracks/DashDailyTrackVehicle';
 import DashIncidents from './components/incidents/DashIncidents';
 import { DriverHome } from './components/driverArea/DriverHome';
+import { DriverReporPage } from "./components/driverArea/DriverReportPage";
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
 
       {/* Driver Area */}
       <Route path="/driver-home" component={DriverHome} />
+      <Route path="/driver-report" component={DriverReporPage} />
     </Switch>
   );
 };

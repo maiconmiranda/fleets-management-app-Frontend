@@ -51,7 +51,7 @@ const DashHome = () => {
         </Link>
         {/* end ----------/  */}
 
-        {/* link to view all numbers of  daily reports */}
+        {/* link to / and view all numbers of  daily reports */}
         <Link to="/view-daily-report" style={{ textDecoration: "none" }}>
           <div className="dashcard">
             <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>

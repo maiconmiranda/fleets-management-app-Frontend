@@ -42,17 +42,25 @@ export function DisplayOneDriver(props) {
 
   return (
     <div style={{ marginTop: "50px" }}>
-      <h3>View Driver</h3>
+      <h3 style={{ textAlign: "center", color: "#227c9d" }}>View Driver</h3>
       <Card className="card card-body h-100">
         <div classname="col-sm-4 py-2">
           {/* driver details */}
           <Card.Body>
-            <Card.Title>Driver Name: {driver.user_name}</Card.Title>
+            <Card.Title>Driver Name: {driver.user_name} </Card.Title>
+
+
             <Card.Text>
-              <p>Email: {driver.email}</p>
-              <p>License Number: {driver.driver_license_number}</p>
-              <p>License Expiry Date: {driver.driver_license_expiry}</p>
-              <p>Driver Id: {driver.id}</p>
+              Email: <p id="card__text"> {driver.email}</p>
+            </Card.Text>
+            <Card.Text>
+              License Number:<p id="card__text"> {driver.driver_license_number}</p>
+            </Card.Text>
+            <Card.Text>
+              License Expiry Date:<p id="card__text"> {driver.driver_license_expiry}</p>
+            </Card.Text>
+            <Card.Text>
+              Driver Id: <p id="card__text"> {driver.id}</p>
             </Card.Text>
           </Card.Body>
           <Card.Footer style={CardFooterStyle}>

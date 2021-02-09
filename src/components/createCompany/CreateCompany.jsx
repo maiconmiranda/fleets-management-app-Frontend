@@ -17,6 +17,7 @@ export function CreateCompany() {
             marginTop: "30px",
             fontFamily: "sans-serif",
             fontSize: "35px",
+            color: "#227C9D"
           }}
         >
           Add your Company Details

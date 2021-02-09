@@ -119,13 +119,15 @@ export function ViewDailyTracks() {
           </div>
 
           <div className="charts__right__cards">
-            <div className="dashcard">
-              <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
-              <div className="card_inner">
-                <p className="text_primary-p">Condition Reports</p>
-                <span className="font-bold text-title">{getDailyReptorts.length}</span>
+            <Link to="/view-daily-report" style={{ textDecoration: "none" }}>
+              <div className="dashcard">
+                <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
+                <div className="card_inner">
+                  <p className="text_primary-p">Condition Reports</p>
+                  <span className="font-bold text-title">{getDailyReptorts.length}</span>
+                </div>
               </div>
-            </div>
+            </Link>
 
             <div className="dashcard">
               <i className="fa fa-car fa-2x text-blue" aria-hidden="true"></i>
@@ -135,13 +137,15 @@ export function ViewDailyTracks() {
               </div>
             </div>
 
-            <div className="dashcard">
-              <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
-              <div className="card_inner">
-                <p className="text_primary-p">Incidents</p>
-                <span className="font-bold text-title">{getIncidents.length}</span>
+            <Link to="/view-incidents" style={{ textDecoration: "none" }}>
+              <div className="dashcard">
+                <i className="fa fa-car fa-2x text-red" aria-hidden="true"></i>
+                <div className="card_inner">
+                  <p className="text_primary-p">Incidents</p>
+                  <span className="font-bold text-title">{getIncidents.length}</span>
+                </div>
               </div>
-            </div>
+            </Link>
             <Link to="/view-daily-track-vehicle" style={{ textDecoration: "none" }}>
               <div>
                 <div className="card1">

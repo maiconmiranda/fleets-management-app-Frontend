@@ -23,6 +23,9 @@ const Dashboard = () => {
           {/* display the greetings  */}
           <DashGreeting />
           {/* display the form to Update Company details */}
+          <div>
+            <h3>Update Company Details</h3>
+          </div>
           <UpdateCompany />
         </div>
       </dash_main>

@@ -75,16 +75,35 @@ export function ViewDailyTrackVehicle() {
                     {dailyTracks.map((dailyTrack) => {
                         return (
                             <div style={{ marginTop: "10px" }}>
-                                {/* <ListGroup.Item as="li" variant="primary">Rego: {vehicle[0].rego}</ListGroup.Item>
-                                <ListGroup.Item as="li" variant="info">Fleet Id: {vehicle[0].fleet_id}</ListGroup.Item> */}
-                                <ListGroup.Item as="li" variant="info">Date: {dailyTrack.date}</ListGroup.Item>
-                                <ListGroup.Item as="li">Odometer Start: {dailyTrack.odometer_start}</ListGroup.Item>
-                                <ListGroup.Item as="li">Odometer end: {dailyTrack.odometer_end}</ListGroup.Item>
-                                <ListGroup.Item as="li">Fuel fee: {dailyTrack.fuel_fee}</ListGroup.Item>
-                                <ListGroup.Item as="li">Parking fee: {dailyTrack.parking_fee}</ListGroup.Item>
-                                <ListGroup.Item as="li">Fines: {dailyTrack.fines}</ListGroup.Item>
-                                <ListGroup.Item as="li">Other Expenses: {dailyTrack.other_fee}</ListGroup.Item>
-                                <ListGroup.Item as="li">Expense Description: {dailyTrack.other_fee_description}</ListGroup.Item>
+                                <ListGroup.Item as="li" variant="warning">Date:
+                              <p id="card__text"> {dailyTrack.date}
+                                    </p>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li">Odometer Start:
+                              <p id="card__text"> {dailyTrack.odometer_start}
+                                    </p>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li">Odometer end:
+                              <p id="card__text"> {dailyTrack.odometer_end}
+                                    </p>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li">Fuel fee:
+                              <p id="card__text"> {dailyTrack.fuel_fee}
+                                    </p>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li">Parking fee:
+                              <p id="card__text"> {dailyTrack.parking_fee}
+                                    </p>
+                                </ListGroup.Item>
+                                <ListGroup.Item as="li">Fines:
+                              <p id="card__text"> {dailyTrack.fines}
+                                    </p></ListGroup.Item>
+                                <ListGroup.Item as="li">Other Expenses:
+                              <p id="card__text"> {dailyTrack.other_fee}
+                                    </p></ListGroup.Item>
+                                <ListGroup.Item as="li">Expense Description:
+                              <p id="card__text"> {dailyTrack.other_fee_description}
+                                    </p></ListGroup.Item>
                             </div>
                         )
                     })}

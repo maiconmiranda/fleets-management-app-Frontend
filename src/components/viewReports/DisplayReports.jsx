@@ -30,7 +30,7 @@ export function DisplayReports() {
             <Card.Text>
               View all incidents reported by the drivers involved.
             </Card.Text>
-            <Link to="/view-daily-report">
+            <Link to="/view-incidents">
               <Button style={{ width: "100px" }} variant="primary" size="sm">
                 View
               </Button>{" "}
@@ -46,7 +46,7 @@ export function DisplayReports() {
             <Card.Text>
               Get to know the condition of your fleet. Reported by the drivers.
             </Card.Text>
-            <Link to="/view-incidents">
+            <Link to="/view-daily-report">
               <Button style={{ width: "100px" }} variant="primary" size="sm">
                 View
               </Button>{" "}

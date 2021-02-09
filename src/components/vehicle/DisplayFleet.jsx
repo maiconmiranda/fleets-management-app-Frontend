@@ -62,12 +62,22 @@ export function DisplayAllVehicles() {
                 <Card.Body>
                   <Card.Title>Fleet Number: {vehicle.fleet_id}</Card.Title>
                   <Card.Text>
-                    <p>Make: {vehicle.make}</p>
-                    <p>Model: {vehicle.model}</p>
-                    <p>Year: {vehicle.year}</p>
-                    <p>Color: {vehicle.color}</p>
-                    <p>Rego: {vehicle.rego}</p>
-                    <p>Id: {vehicle.id}</p>
+                    Make: <p id="card__text">{vehicle.make}</p>
+                  </Card.Text>
+                  <Card.Text>
+                    Model: <p id="card__text">{vehicle.model}</p>
+                  </Card.Text>
+                  <Card.Text>
+                    Year: <p id="card__text">{vehicle.year}</p>
+                  </Card.Text>
+                  <Card.Text>
+                    Color: <p id="card__text">{vehicle.color}</p>
+                  </Card.Text>
+                  <Card.Text>
+                    Rego: <p id="card__text">{vehicle.rego}</p>
+                  </Card.Text>
+                  <Card.Text>
+                    Id: <p id="card__text">{vehicle.id}</p>
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer style={CardFooterStyle}>

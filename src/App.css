@@ -3,6 +3,32 @@
   text-align: center;
 }
 
+/* // => ------  BOOTSTRAP OVERWRITES ------- <= // */
+
+/* update the color for all forms label, overwriting bootstrap */
+.form-label {
+  color: #227c9d;
+}
+
+.card-body {
+  color: #293072;
+}
+
+.card-body .card-title {
+  color: #227c9d;
+}
+
+#card__text {
+  display: inline;
+  color: #1d9f93 !important;
+}
+
+.list-group-item {
+  color: #293072;
+}
+
+/* // => ------ END ---------  <=// */
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
