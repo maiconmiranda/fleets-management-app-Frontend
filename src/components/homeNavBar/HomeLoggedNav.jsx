@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import logo from "../../assets/logo.svg";
 
-// import {Link} from 'react-router-dom'
-// import { Nav, NavLink, NavLinks, Logo } from "./styles/App";
 
+// Home nav bar
 export function HomeNavBar() {
   return (
     <Navbar collapseOnSelect expand="md" py-5 className="navbar-custom">

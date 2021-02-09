@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { CardColumns, Card, Button, ListGroup } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-
-const CardFooterStyle = {
-  display: "flex",
-  justifyContent: "space-evenly",
-  borderBottom: "1px solid #227C9D",
-  borderTop: "1px solid #227C9D",
-  backgroundColor: "white",
-};
-
+// Logic to fetch All Drivers that belongs to company
 export function DisplayAllDrivers() {
   const [drivers, setDrivers] = useState([]);
 
@@ -43,7 +35,7 @@ export function DisplayAllDrivers() {
         </ListGroup>
 
       </div>
-
+      {/* display the fethced data */}
       <ListGroup as="ul">
         {drivers.map((driver) => {
           return (
@@ -58,29 +50,6 @@ export function DisplayAllDrivers() {
           )
         })}
       </ListGroup>
-      {/* <CardColumns style={{ marginTop: "50px" }}>
-        {drivers.map((driver) => {
-          return (
-            <Card className="card card-body h-100">
-              <div classname="col-sm-4 py-2">
-                <Card.Body>
-                  <Card.Title>Driver: {driver.user_name}</Card.Title>
-                  <Card.Text>
-                    <p>Email: {driver.email}</p>
-                    <p>Driver ID: {driver.driver_id}</p>
-                    <p>License Number: {driver.driver_license_number}</p>
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer style={CardFooterStyle}>
-                  <Link to="/view-driver">
-                    <Button variant="success">View</Button>
-                  </Link>
-                </Card.Footer>
-              </div>
-            </Card>
-          )
-        })}
-      </CardColumns> */}
     </>
   );
 }

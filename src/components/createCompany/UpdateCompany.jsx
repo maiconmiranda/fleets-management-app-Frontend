@@ -4,7 +4,7 @@ import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-
+// Update company Logic
 export function UpdateCompany() {
   let history = useHistory();
   console.log(history)
@@ -18,6 +18,7 @@ export function UpdateCompany() {
   const [contactNumber, setContactNumber] = useState("");
   const [website, setWebsite] = useState("");
   const [id, setId] = useState(null)
+  // headers with token
   const headers = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -26,7 +27,7 @@ export function UpdateCompany() {
 
   function fetchCompany() {
 
-    // Call the API
+    // Call the API to get the user details
     fetch(`${process.env.REACT_APP_BACKEND_URL}/status`, headers).then((response) => {
       if (response.ok) {
         return response.json();
@@ -34,6 +35,7 @@ export function UpdateCompany() {
         return Promise.reject(response);
       }
     }).then((data) => {
+      // the api above pass the company id related to the user, to fetch the company 
       return fetch(`${process.env.REACT_APP_BACKEND_URL}/companies/` + data.company_id, headers);
     }).then((response) => {
       if (response.ok) {
@@ -61,6 +63,7 @@ export function UpdateCompany() {
     fetchCompany();
   }, []);
 
+  // Updates the company details
   async function onFormSubmit(e) {
     try {
       e.preventDefault();
@@ -84,7 +87,7 @@ export function UpdateCompany() {
           },
         }),
       });
-      // redirect_to
+      // redirect_to main dashboard
       history.push("/company",);
     } catch (err) {
       console.log(err.message);

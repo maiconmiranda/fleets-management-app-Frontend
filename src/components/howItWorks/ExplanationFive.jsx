@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Wrap } from "./HowItWorkStyle";
 import looking_data from "../../assets/looking_data.svg";
 
+// The last component that explains on how it works
 export function ExplanationFive() {
   const img_style = { with: "150px", height: "150px" };
   const cardStyle = { height: "350px" };

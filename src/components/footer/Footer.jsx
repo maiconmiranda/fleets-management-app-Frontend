@@ -1,6 +1,7 @@
 import { LinkX, SmallLogo, Content, AppFooter, Allrights } from "./FooterStyle";
 import logo from "../../assets/logo.svg";
 
+// instyle to set the footer to the bottom of the page
 const footerWrap = {
   backgroundColor: "#F8F8F8",
   borderTop: "1px solid #E7E7E7",

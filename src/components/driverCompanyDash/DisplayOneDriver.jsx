@@ -3,6 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation, useHistory } from "react-router-dom";
 
+// Added instyle to overwide bootstrap
 const CardFooterStyle = {
   display: "flex",
   justifyContent: "space-evenly",
@@ -11,13 +12,14 @@ const CardFooterStyle = {
   backgroundColor: "white",
 };
 
+// Display one selected driver
 export function DisplayOneDriver(props) {
   const location = useLocation();
   const history = useHistory();
   const driver = location.data;
   console.log(driver)
 
-
+  // the driver data is passed through the history and displayed, here the driver id is passed to confirm delete
   async function onDeleteClick(e, driver) {
     console.log(driver.id)
     try {
@@ -30,6 +32,7 @@ export function DisplayOneDriver(props) {
             'Authorization': `Bearer ${localStorage.getItem("token")}`,
           },
         });
+        // redirect to company dashboard
         history.push('/company')
       }
     } catch (err) {
@@ -42,6 +45,7 @@ export function DisplayOneDriver(props) {
       <h3>View Driver</h3>
       <Card className="card card-body h-100">
         <div classname="col-sm-4 py-2">
+          {/* driver details */}
           <Card.Body>
             <Card.Title>Driver Name: {driver.user_name}</Card.Title>
             <Card.Text>

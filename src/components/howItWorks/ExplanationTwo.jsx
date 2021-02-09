@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Wrap } from "./HowItWorkStyle";
 import car_on_road from "../../assets/car_on_road.svg";
 
+// component 2 on how it works
 export function ExplanationTwo() {
   const img_style = { with: "150px", height: "150px" };
   const cardStyle = { height: "350px" };

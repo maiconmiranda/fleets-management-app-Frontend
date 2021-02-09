@@ -4,6 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { DisplayAllDrivers } from "./DisplayAllDrivers";
 
+// Display All drivers that belongs to the company
 const ViewAllDrivers = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false);
   const openSidebar = () => {
@@ -18,6 +19,7 @@ const ViewAllDrivers = () => {
       <dash_main>
         <div className="main__container">
           <DashGreeting />
+          {/* Display the data */}
           <DisplayAllDrivers />
         </div>
       </dash_main>

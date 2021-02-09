@@ -1,3 +1,4 @@
+// style for sign up page
 import styled from "styled-components";
 
 export const Wrap = styled.div`

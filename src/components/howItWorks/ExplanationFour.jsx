@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Wrap } from "./HowItWorkStyle";
 import tablet_and_guy from "../../assets/tablet_and_guy.svg";
 
+// Component 4 that goes on how it works
 export function ExplanationFour() {
   const img_style = { with: "150px", height: "150px" };
   const cardStyle = { height: "350px" };

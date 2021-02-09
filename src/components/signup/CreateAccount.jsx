@@ -5,6 +5,9 @@ import { HomeNavBar } from "../homeNavBar/HomeNavBar";
 import { Wrap, Head, Head2, Text, CardWrap } from "./CreateAccountStyle";
 import { Footer } from "../footer/Footer";
 
+// Option to redirect the user
+// If the user is a company, goes to Create company first
+// If the user is a driver, goes to sign up page
 export function CreateAccount() {
   return (
     <>
@@ -24,6 +27,7 @@ export function CreateAccount() {
                   Organization, click in the button below.
                 </Text>
               </Card.Text>
+              {/* link to create company */}
               <Link to="/create-company">
                 <Button variant="primary">I am a Company</Button>
               </Link>
@@ -43,6 +47,7 @@ export function CreateAccount() {
                   account.
                 </Text>
               </Card.Text>
+              {/* link to sign up page */}
               <Link to="/sign-Up">
                 <Button variant="primary">I am a Driver</Button>
               </Link>

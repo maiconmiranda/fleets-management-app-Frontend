@@ -4,6 +4,8 @@ import { CompanyForm } from "./CompanyForm";
 import { HomeNavBar } from "../homeNavBar/HomeNavBar";
 import { Footer } from "../footer/Footer";
 
+
+// This is the page that will display the create company on browser
 export function CreateCompany() {
   return (
     <>
@@ -19,6 +21,7 @@ export function CreateCompany() {
         >
           Add your Company Details
         </h1>
+        {/* company form to create company */}
         <CompanyForm />
       </Wrap>
       <Footer />

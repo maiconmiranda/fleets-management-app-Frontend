@@ -11,6 +11,7 @@ import { Testimonials } from "./Testimonials";
 import { ButtonWrapper, FooterWrapper } from "./HowItWorkStyle";
 import { Footer } from "../footer/Footer";
 
+// how it works page
 export function HowItWorks() {
   return (
     <>
@@ -32,6 +33,7 @@ export function HowItWorks() {
         Fleets keep track of the daily expenses and reports made by the drivers,
         such as fuel expenses, fines, vehicle conditions and much more.{" "}
       </h3>
+      {/* The componets below are the contents explaining the app */}
       <ExplanationOne />
       <ExplanationTwo />
       <ExplanationThree />
@@ -46,6 +48,7 @@ export function HowItWorks() {
           </Link>
         </div>
       </ButtonWrapper>
+      {/* testimonials */}
       <Testimonials />
       <FooterWrapper>
         <Footer />

@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Wrap } from "./HowItWorkStyle";
 import sign_in from "../../assets/sign_in.svg";
 
+// Firs component on how it works
 export function ExplanationOne() {
   const img_style = { with: "150px", height: "150px" };
   const cardStyle = { height: "350px" };

@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import { CarouselWrapper } from "./HowItWorkStyle";
 
+// testimonials
 export function Testimonials() {
   return (
     <CarouselWrapper>

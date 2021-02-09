@@ -5,12 +5,14 @@ import { FormWrap, Wrap } from "./LogInStyle";
 import { Footer } from "../footer/Footer";
 import { useHistory } from "react-router-dom";
 
+// Login Page Logic
 export function LogIn() {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState("");
 
+  // Post the login details
   async function onFormSubmit(event) {
     event.preventDefault();
     const body = {
@@ -33,7 +35,7 @@ export function LogIn() {
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
       }
-
+      // Check if the user is Admin or Not
       const userFinder = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/users`
       )
@@ -46,7 +48,8 @@ export function LogIn() {
           console.log(selectedUser);
           console.log(id);
           console.log(isAdmin);
-          isAdmin ? history.push({ pathname: "/company", state: { companyId: id, userName: isUser } }) : history.push("/");
+          // Redirect User to dashboard if is Admin, otherwise it will go to Drivers page
+          isAdmin ? history.push({ pathname: "/company", state: { companyId: id, userName: isUser } }) : history.push("/driver-home");
         });
 
     } catch (err) {
@@ -56,6 +59,7 @@ export function LogIn() {
   return (
     <>
       <Wrap>
+        {/* Top Navbar */}
         <HomeNavBar />
         <h1
           style={{
@@ -68,6 +72,7 @@ export function LogIn() {
           Log In
         </h1>
         {errMessage && <span>{errMessage}</span>}
+        {/* login form */}
         <FormWrap>
           <Form onSubmit={onFormSubmit}>
             <Form.Group>

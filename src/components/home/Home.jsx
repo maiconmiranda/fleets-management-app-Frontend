@@ -9,12 +9,15 @@ import guy_and_coin from "../../assets/guy_and_coin.svg";
 import tablet_and_guy from "../../assets/tablet_and_guy.svg";
 import { Footer } from "../footer/Footer";
 
+// The home page
 export function Home() {
   return (
     <>
       <div>
+        {/* Navbar */}
         <HomeNavBar />
       </div>
+      {/* content */}
       <HomeCollection>
         <CardDeck>
           <Card1>
@@ -43,11 +46,13 @@ export function Home() {
           <Card.Text className="text-info">
             SIMPLE AND EASY TO USE, LEARN HOW IT WORKS
           </Card.Text>
+          {/* link to how it works */}
           <Link to="/how-it-works">
             <Button variant="danger">Click Here</Button>
           </Link>
         </Card.Body>
       </CardDeck>
+      {/* footer */}
       <Footer />
     </>
   );

@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Wrap } from "./HowItWorkStyle";
 import on_scooter from "../../assets/on_scooter.svg";
 
+// Component 3 on how it works
 export function ExplanationThree() {
   const img_style = { with: "150px", height: "150px" };
   const cardStyle = { height: "350px" };

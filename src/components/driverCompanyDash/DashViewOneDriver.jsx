@@ -4,6 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { DisplayOneDriver } from "./DisplayOneDriver";
 
+// Display one selected driver, that belong to the company
 const ViewDriver = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false);
   const openSidebar = () => {
@@ -18,6 +19,7 @@ const ViewDriver = () => {
       <dash_main>
         <div className="main__container">
           <DashGreeting />
+          {/* display data */}
           <DisplayOneDriver />
         </div>
       </dash_main>

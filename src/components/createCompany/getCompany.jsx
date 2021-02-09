@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-
+// This function returns 
 export function GetCompany() {
     const [companyName, setCompanyName] = useState("");
     const [email, setEmail] = useState("");

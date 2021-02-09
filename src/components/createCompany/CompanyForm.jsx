@@ -3,6 +3,8 @@ import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
+
+// Create New Company
 export function CompanyForm() {
   let history = useHistory();
   const [companyName, setCompanyName] = useState("Mahdi");
@@ -16,6 +18,7 @@ export function CompanyForm() {
   const [website, setWebsite] = useState("");
   const [isAdmin, setIsAdmin] = useState(true);
 
+  // Send data to backEnd
   async function onFormSubmit(e) {
     try {
       e.preventDefault();
