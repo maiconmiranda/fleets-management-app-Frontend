@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { HomeNavBar } from "../../components/homeNavBar/HomeNavBar";
 import { FormWrap, Wrap } from "./LogInStyle";
 import { Footer } from "../footer/Footer";
 import { useHistory } from "react-router-dom";
+import { AlertDismissibleExample } from "./ErrorLogin"
 
 // Login Page Logic
 export function LogIn() {
@@ -15,6 +16,7 @@ export function LogIn() {
   // Post the login details
   async function onFormSubmit(event) {
     event.preventDefault();
+
     const body = {
       auth: { email, password },
     };
@@ -30,15 +32,20 @@ export function LogIn() {
         }
       );
       if (response.status >= 400) {
-        throw new Error("incorrect credentials");
+        throw new Error(AlertDismissibleExample());
       } else {
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
       }
       // Check if the user is Admin or Not
       const userFinder = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/users`
-      )
+        `${process.env.REACT_APP_BACKEND_URL}/users`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           const selectedUser = data.find((el) => el.email === email);
