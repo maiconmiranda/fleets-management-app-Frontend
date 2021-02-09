@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 const CardFooterStyle = {
   display: "flex",
@@ -13,8 +13,9 @@ const CardFooterStyle = {
 export function DisplayOneVehicle(props) {
   const [vehicle, setvehicle] = useState(null);
   const location = useLocation();
-  const id = location.data
-  console.log(id);
+  const history = useHistory()
+  const id = location.id
+  // console.log(id)  
 
 
   useEffect(() => {
@@ -50,11 +51,11 @@ export function DisplayOneVehicle(props) {
                 <p>Insurance Policy Number: {vehicle.insurance_policy_number}</p>
                 <p>Insurance Expiry Date: {vehicle.insurance_expiry_date}</p>
                 <p>Insurance Cost: {vehicle.insurance_fee}</p>
-                <p>Vehicle Assigned to:</p>
+                <p>Maintenance Cost: {vehicle.maintenance_fee}</p>
               </Card.Text>
             </Card.Body>
             <Card.Footer style={CardFooterStyle}>
-              <Link to="/edit-vehicle/">
+              <Link to={{ pathname: "/edit-vehicle", data: vehicle }}>
                 <Button variant="info">Edit</Button>
               </Link>
               <Link to="/company">
