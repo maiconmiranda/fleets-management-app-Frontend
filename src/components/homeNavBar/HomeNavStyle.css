@@ -37,6 +37,17 @@
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .navbar-collapse {
+    background: #fe6d73 !important;
+  }
+  .navbar-collapse .nav_link {
+    color: #fef9ef !important;
+  }
+  .underline {
+    text-decoration-line: none !important;
+  }
+}
 @media only screen and (max-width: 480px) {
   .underline {
     text-decoration-line: none !important;
