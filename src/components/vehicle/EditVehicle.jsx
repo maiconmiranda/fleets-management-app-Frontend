@@ -36,19 +36,6 @@ export function EditVehicle(props) {
     location.data.maintenance_costs
   );
 
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_BACKEND_URL}/vehicles/${id}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((vehicle) => {
-  //       setName(subscription.name);
-  //       setPrice(subscription.price_per_month);
-  //       setBillingPeriod(subscription.billing_period);
-  //     });
-  // }, [id]);
 
   async function onFormSubmit(e) {
     try {

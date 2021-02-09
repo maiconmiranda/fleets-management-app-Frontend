@@ -6,8 +6,15 @@ import { Footer } from "../footer/Footer";
 import { Wrap } from "./SignUpStyle";
 import { useLocation, useHistory } from "react-router-dom";
 
+// both company and driver will go to this page
+// to complete the process
+// the diference is the company has to create a company first
+// then it will go to this page, where the props will be passed
+// to set the is_admin to true, for company
 export function SignUp(props) {
+  // the company props will be passed 
   const location = useLocation();
+  // check if the is_admin is passed and convert to true, for company
   const isAdminSet = location.state ? Boolean(location.state.isAdmin) : false
   const history = useHistory();
   const [companies, setCompanies] = useState([]);
@@ -19,6 +26,7 @@ export function SignUp(props) {
   const [companyName, setCompanyName] = useState("");
   const [companyId, setCompanyId] = useState(null);
   const [driverId, setDriverId] = useState("");
+  // if the admin is passed it will be passed on useState
   const [isAdmin, setIsAdmin] = useState(isAdminSet);
 
   const handleChange = (e) => {
@@ -36,10 +44,7 @@ export function SignUp(props) {
     console.log(companies);
   };
 
-  // function companyFinder(e) {
-  //   setCompanyId(e.target.id);
-  // }
-
+  // post the sign up
   async function onFormSubmit(event) {
     event.preventDefault();
     console.log(companyId);
@@ -72,7 +77,8 @@ export function SignUp(props) {
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {
-        isAdmin ? history.push("/company") : history.push("/");
+        // if the user is admin goes to company dashboard, otherwise goes to driver page
+        isAdmin ? history.push("/company") : history.push("/driver-home");
       }
     } catch (err) {
       console.log(err.message);
@@ -211,7 +217,7 @@ export function SignUp(props) {
                 })}
               </Form.Control>
             </Form.Group>
-
+            {/* The switch is unavailable for users, it just display if is admin or not */}
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check
                 disabled

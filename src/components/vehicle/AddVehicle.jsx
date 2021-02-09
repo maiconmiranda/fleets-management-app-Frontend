@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { FormWrap, ButtonWrap } from "../logIn/LogInStyle";
+import { ButtonWrap } from "../logIn/LogInStyle";
 import { Form, Button } from "react-bootstrap";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { GetUser } from "../main/GetUser";
 
+// Logic to add vehicle form 
 export function AddVehicle() {
   const history = useHistory()
   const getUser = GetUser();

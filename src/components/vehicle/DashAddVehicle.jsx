@@ -4,6 +4,8 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { AddVehicle } from "./AddVehicle";
 
+
+// display the add vehicle form and greetings
 const AddVehicles = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false);
   const openSidebar = () => {

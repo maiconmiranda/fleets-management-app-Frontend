@@ -4,6 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { DisplayOneVehicle } from "./ViewOneVehicle";
 
+// display one selected vehicle 
 const ViewOneVehicle = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false);
   const openSidebar = () => {
@@ -18,6 +19,7 @@ const ViewOneVehicle = () => {
       <dash_main>
         <div className="main__container">
           <DashGreeting />
+          {/* data */}
           <DisplayOneVehicle />
         </div>
       </dash_main>

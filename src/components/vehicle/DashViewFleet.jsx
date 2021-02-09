@@ -4,6 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { DisplayAllVehicles } from "./DisplayFleet";
 
+// display all vehicles that beolongs to company
 const ViewAllVehicles = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false);
   const openSidebar = () => {
@@ -18,6 +19,7 @@ const ViewAllVehicles = () => {
       <dash_main>
         <div className="main__container">
           <DashGreeting />
+          {/* logic goes here */}
           <DisplayAllVehicles />
         </div>
       </dash_main>

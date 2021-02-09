@@ -4,6 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { DashGreeting } from "../main/DashGreeting";
 import { EditVehicle } from "./EditVehicle";
 
+// display the edit vehicle details
 const EditVehicles = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false);
   const openSidebar = () => {
@@ -18,6 +19,7 @@ const EditVehicles = () => {
       <dash_main>
         <div className="main__container">
           <DashGreeting />
+          {/* logic goes here */}
           <EditVehicle />
         </div>
       </dash_main>

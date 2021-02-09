@@ -18,11 +18,11 @@ import ViewOneVehicle from "./components/vehicle/DashViewOneVehicle";
 import DisplayAssignDriver from "./components/assignDriver/DashAssignDriverToVehicle";
 import ViewReports from "./components/viewReports/DashViewReports";
 import DashDailyTrack from "./components/viewDailyTracks/DashDailyTrack";
-import DashReportByVehicle from "./components/dailytrackByVehicle/DashReportByVehicle";
 import { GetCompany } from './components/createCompany/getCompany';
 import DashDailyReports from './components/viewDailyReports/DashDailyReports';
 import DashDailyTrackVehicle from './components/viewDailyTracks/DashDailyTrackVehicle';
 import DashIncidents from './components/incidents/DashIncidents';
+import { DriverHome } from './components/driverArea/DriverHome';
 
 
 const App = () => {
@@ -55,10 +55,12 @@ const App = () => {
       <Route path="/view-daily-track-vehicle" component={DashDailyTrackVehicle} />
 
 
-      <Route path="/daily-report-vehicle" component={DashReportByVehicle} />
       <Route path="/view-daily-report" component={DashDailyReports} />
 
       <Route path="/view-incidents" component={DashIncidents} />
+
+      {/* Driver Area */}
+      <Route path="/driver-home" component={DriverHome} />
     </Switch>
   );
 };
