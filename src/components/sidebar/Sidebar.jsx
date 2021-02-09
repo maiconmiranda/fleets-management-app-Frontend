@@ -55,11 +55,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
           <i className="fa fa-plus"></i>
           <Link to="/add-vehicle">Add Vehicle</Link>
         </div>
-        {/* link to display all vehicle, the remove buttom is there */}
-        <div className="sidebar__link">
-          <i className="fa fa-minus"></i>
-          <Link to="/view-all-vehicles">Remove Vehicle</Link>
-        </div>
+
         {/* link to assign driver to vehicle */}
         <div className="sidebar__link">
           <i className="fa fa-link"></i>

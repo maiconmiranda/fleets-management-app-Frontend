@@ -59,7 +59,7 @@ export function DisplayOneDriver(props) {
             <Link to={{ pathname: "/view-reports", data: driver }}>
               <Button variant="info">Reports</Button>
             </Link>
-            <Link to="/company">
+            <Link to="/view-all-drivers">
               <Button variant="danger" onClick={(e) => onDeleteClick(e, driver)}>Remove</Button>
             </Link>
           </Card.Footer>
