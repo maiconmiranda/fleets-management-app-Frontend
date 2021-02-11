@@ -26,7 +26,8 @@ export function ViewDailyTracks() {
   })
 
   const convertToNumber = getAllfuelcosts.map(Number)
-  const sumOfFuelCosts = convertToNumber.reduce((a, b) => a + b, 0).toFixed(2)
+  const sumFuelCosts = convertToNumber.reduce((a, b) => a + b, 0)
+  const sumOfFuelCosts = new Intl.NumberFormat('de-AU').format(sumFuelCosts)
   // End -----------------------------------------/
 
   // Get the parking fees -------------------/
@@ -36,7 +37,8 @@ export function ViewDailyTracks() {
     return ParkingFess.parkingFee
   })
   const convertParkingfee = getParkingFees.map(Number)
-  const sumOfparkingFees = convertParkingfee.reduce((a, b) => a + b, 0).toFixed(2)
+  const getSumOfParkingFees = convertParkingfee.reduce((a, b) => a + b, 0)
+  const sumOfparkingFees = new Intl.NumberFormat('de-AU').format(getSumOfParkingFees)
   // End ---------------------------------/
 
   // Get the fines -------------------/
@@ -46,7 +48,8 @@ export function ViewDailyTracks() {
     return fines.fines
   })
   const convertFines = getFines.map(Number)
-  const sumOfFines = convertFines.reduce((a, b) => a + b, 0).toFixed(2)
+  const finesSum = convertFines.reduce((a, b) => a + b, 0)
+  const sumOfFines = new Intl.NumberFormat('de-AU').format(finesSum)
   // End ---------------------------------/
 
 
@@ -57,12 +60,14 @@ export function ViewDailyTracks() {
     return Others.otherCosts
   })
   const convertOthers = getOthers.map(Number)
-  const sumOfOthers = convertOthers.reduce((a, b) => a + b, 0).toFixed(2)
+  const OthersExpensesSum = convertOthers.reduce((a, b) => a + b, 0)
+  const sumOfOthers = new Intl.NumberFormat('de-AU').format(OthersExpensesSum)
   // End ---------------------------------/
 
   // Get the total costs of fuel, praking , fines and others
-  const totalOfAll = sumOfFuelCosts + sumOfparkingFees + sumOfFines + sumOfOthers
-  const total = parseFloat(totalOfAll).toFixed(2)
+  const expenses = [sumFuelCosts, getSumOfParkingFees, finesSum, OthersExpensesSum]
+  const sumOfAll = expenses.map(Number).reduce((a, b) => a + b, 0)
+  const total = new Intl.NumberFormat('de-AU').format(sumOfAll)
   // ------------------------/
 
 
@@ -103,7 +108,7 @@ export function ViewDailyTracks() {
             </div>
 
             <div className="card4">
-              <h1>Oders</h1>
+              <h1>Others</h1>
               <p>${sumOfOthers}</p>
             </div>
           </div>
